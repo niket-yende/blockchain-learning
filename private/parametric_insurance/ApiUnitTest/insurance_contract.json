@@ -1,0 +1,13 @@
+{
+    "customerName":"test user",
+    "insuranceCompanyName":"icici",
+    "amount":"200000.00",
+    "insuranceCriterias":{
+        "rain":"6",
+        "snow": false,
+        "temp":"40"
+    },
+    "startDate":"2019-01-14T06:59:23Z",
+    "endDate":"2019-01-15T06:27:43Z",
+    "location":"Bangalore"
+}

@@ -1,0 +1,76 @@
+<br>
+<br>
+
+<div class="container container-styles">
+	<div class="panel panel-primary"  style="background-color:rgb(235,235,235)">
+         <div class="header">
+            <h3>Contract History</h3>
+        </div>
+        <div *ngIf="load" class="linePreloader"></div>
+        <div class="panel-body padding">
+            <div *ngIf="data_is_there">
+               <span style="font-size:18px">Contract Id :</span> <span style="font-size:15px"> &nbsp;{{name}}</span><br/><br/>
+                <div *ngIf="len==1">
+                  <ol class="progress-tracker">
+                    <li class="step completed"><span class="step-name" style="background:#7ce43f"><button (click)="seperate_details('INACTIVE')" data-target="addDialog">CREATED</button></span></li>
+                    <li class="step"><span class="step-name" style="background:#e0d4d4">ACTIVE</span></li>
+                    <li class="step"><span class="step-name" style="background:#e0d4d4">UNCLAIMED</span></li>
+                  </ol>
+              </div>
+              <div *ngIf="len==2">
+                  <ol class="progress-tracker">
+                    <li class="step completed"><span class="step-name" style="background:#bcc5c5"><button (click)="seperate_details('INACTIVE')">CREATED</button></span></li>
+                    <li class="step completed"><span class="step-name" style="background:#7ce43f"><button (click)="seperate_details('ACTIVE')">ACTIVE</button></span></li>
+                    <li class="step"><span class="step-name" style="background:#e0d4d4">UNCLAIMED</span></li>
+                  </ol>
+              </div>
+              <div *ngIf="len==3 && claim=='CLAIMED'">
+                  <ol class="progress-tracker">
+                    <li class="step completed"><span class="step-name" style="background:#bcc5c5"><button (click)="seperate_details('INACTIVE')">CREATED</button></span></li>
+                    <li class="step completed"><span class="step-name" style="background:#bcc5c5"><button (click)="seperate_details('ACTIVE')">ACTIVE</button></span></li>
+                    <li class="step completed"><span class="step-name" style="background:#7ce43f"><button (click)="seperate_details('CLAIMED')">CLAIMED</button></span></li>
+                  </ol>
+              </div>
+              <div *ngIf="len==3 && claim=='UNCLAIMED'">
+                  <ol class="progress-tracker">
+                    <li class="step completed"><span class="step-name" style="background:#bcc5c5"><button (click)="seperate_details('INACTIVE')">CREATED</button></span></li>
+                    <li class="step completed"><span class="step-name" style="background:#bcc5c5"><button (click)="seperate_details('ACTIVE')">ACTIVE</button></span></li>
+                    <li class="step completed"><span class="step-name" style="background:#7ce43f"><button (click)="seperate_details('UNCLAIMED')">UNCLAIMED</button></span></li>
+                  </ol>
+              </div>
+          </div>
+          <p-dialog id="addDialog" [(visible)]="statusClick" showEffect="fade" [modal]='true' [resizable]="true"
+              [draggable]="false" [maximizable]="true" [style]="{width:'700px'}" [responsive]="true">
+            <p-header>
+              History
+            </p-header>
+            <div *ngFor="let val of each_status_detail">
+              <label> Customer Name : </label> {{val.Value.customerName}}<br><br>
+              <label> Status : </label> {{val.Value.status}}<br/><br/>
+              <label> Transaction Id : </label> {{val.TxId}}<br/><br/>
+              <label> Timestamp : </label> {{val.Timestamp}}<br/><br/>
+              <div *ngIf="val.Value.status=='ACTIVE'">
+                <label> Location : </label> {{val.Value.location}}<br/><br/>
+                <label> Start Date : </label> {{val.Value.startDate}}<br/><br/>
+                <label> End Date : </label> {{val.Value.endDate}}<br/><br/>
+                <label> Issue date : </label> {{val.Value.issueDate}}<br><br>
+              </div>
+              <div *ngIf="val.Value.status=='CLAIMED' || val.Value.status=='UNCLAIMED'">
+                <label> Location : </label> {{val.Value.location}}<br/><br/>
+                <label> Start Date : </label> {{val.Value.startDate}}<br/><br/>
+                <label> End Date : </label> {{val.Value.endDate}}<br/><br/>
+                <div *ngIf="val.Value.status=='CLAIMED'">
+                <label> Issue date : </label> {{val.Value.issueDate}}<br><br>
+                <label> Insurance Company Name : </label> {{val.Value.insuranceCompanyName}}<br/><br/>
+                <label> Insured Amount : </label> {{val.Value.insuredAmount}}<br/><br/>
+                <label> Insurance Criterias : </label> {{val.Value.insuranceCriterias|json}}
+                </div>
+              </div>
+            </div>
+            <p-footer>
+              <button type="button" pButton icon="pi pi-close" (click)="statusClick=false" label="Close" class="ui-button-secondary">Close</button>
+            </p-footer>
+        </p-dialog>
+			</div>
+  </div>
+</div>

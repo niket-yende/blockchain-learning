@@ -1,0 +1,45 @@
+2019-01-09T04:58:54.541Z - debug: Listening on port 3000
+2019-01-09T05:00:25.524Z - info: ::ffff:123.63.241.38 - GET / HTTP/1.1 200 23 - 3.444 ms
+
+2019-01-09T05:02:40.382Z - info: Returning user list
+2019-01-09T05:02:40.384Z - info: ::ffff:123.63.241.38 - GET /users HTTP/1.1 200 25 - 1.185 ms
+
+2019-01-11T10:38:00.859Z - debug: Listening on port 3000
+2019-01-11T11:05:56.618Z - info: ::1 - OPTIONS /api/insuranceContract HTTP/1.1 200 4 - 3.367 ms
+
+2019-01-11T11:11:51.302Z - debug: Listening on port 3000
+2019-01-11T11:13:38.026Z - info: ::1 - OPTIONS /api/insuranceContract HTTP/1.1 200 4 - 5.095 ms
+
+2019-01-11T11:31:50.453Z - info: ::1 - OPTIONS /api/insuranceContract HTTP/1.1 200 4 - 0.397 ms
+
+2019-01-11T11:43:47.812Z - info: ::1 - OPTIONS /api/insuranceContract/ HTTP/1.1 200 4 - 0.284 ms
+
+2019-01-11T11:47:23.196Z - info: ::1 - OPTIONS /api/insuranceContract/ HTTP/1.1 200 4 - 0.208 ms
+
+2019-01-11T11:48:34.672Z - info: ::1 - OPTIONS /api/insuranceContract/ HTTP/1.1 200 4 - 0.318 ms
+
+2019-01-11T11:51:54.255Z - info: ::1 - OPTIONS /api/insuranceContract/ HTTP/1.1 200 4 - 0.425 ms
+
+2019-01-11T11:52:06.507Z - info: ::1 - OPTIONS /api/insuranceContract/ HTTP/1.1 200 4 - 0.182 ms
+
+2019-01-11T11:56:01.301Z - info: ::1 - POST /api/insuranceContract HTTP/1.1 200 277 - 0.938 ms
+
+2019-01-11T11:57:07.599Z - info: ::1 - POST /api/insuranceContract HTTP/1.1 200 277 - 0.323 ms
+
+2019-01-11T11:58:22.825Z - info: ::1 - POST /api/insuranceContract HTTP/1.1 200 277 - 0.270 ms
+
+2019-01-11T11:59:08.243Z - info: ::1 - OPTIONS /api/insuranceContract/ HTTP/1.1 200 4 - 0.193 ms
+
+2019-01-11T12:06:32.165Z - info: ::1 - OPTIONS /api/insuranceContract/ HTTP/1.1 200 4 - 0.209 ms
+
+2019-01-11T12:10:01.231Z - debug: Listening on port 3000
+2019-01-11T12:10:26.707Z - info: ::1 - OPTIONS /api/insuranceContract/ HTTP/1.1 200 4 - 3.597 ms
+
+2019-01-11T12:21:31.942Z - debug: Listening on port 3000
+2019-01-11T12:21:49.319Z - info: ::1 - POST /api/insuranceContract/ HTTP/1.1 200 285 - 3.020 ms
+
+2019-01-11T12:50:45.255Z - debug: Listening on port 3000
+2019-01-11T12:56:17.333Z - info: ::1 - POST /api/insuranceContract/ HTTP/1.1 200 285 - 3.140 ms
+
+2019-01-11T13:04:31.440Z - info: ::1 - POST /api/insuranceContract/ HTTP/1.1 200 280 - 0.445 ms
+

@@ -1,0 +1,37 @@
+[
+	{
+		"userName": "org1",
+		"role":"organizer",
+		"password": "123"
+	},
+	{
+		"userName": "shailee",
+		"role":"organizer",
+		"password": "123"
+	},
+	{
+		"userName": "org2",
+		"role":"organizer",
+		"password": "123"
+	},
+	{
+		"userName": "infosys",
+		"role":"insurance",
+		"password": "123"
+	},
+	{
+		"userName": "LIC",
+		"role":"insurance",
+		"password": "123"
+	},
+	{
+		"userName": "Niket",
+		"role":"organizer",
+		"password": "123"
+	},
+	{
+		"userName": "ins1",
+		"role":"insurance",
+		"password": "123"
+	}
+]

@@ -1,0 +1,104 @@
+[
+    {
+        "policyNo":1,
+        "customerName":"Raj",
+        "venue":"Delhi",
+        "insuranceCompany":"ABC",
+        "amount":"123456",
+         "s_Date":"31/01/2019 06:12 AM",
+        "e_Date":"31/01/2019 06:12 AM",
+        "status":"pending",
+        "criteria":{
+            "temp":"30",
+            "rain":"5",
+            "snow":true
+
+        }
+        
+    },
+    {
+        "policyNo":2,
+        "customerName":"Simmi",
+        "venue":"Goa",
+         "insuranceCompany":"JKL",
+        "amount":"123456",
+         "s_Date":"31/01/2019 06:12 AM",
+        "e_Date":"31/01/2019 06:12 AM",
+        "status":"pending",
+        "criteria":{
+            "temp":"30",
+            "rain":"5",
+            "snow":true
+
+        }
+
+    },
+    {
+        "policyNo":3,
+        "customerName":"Rahul",
+        "venue":"Bangalore",
+         "insuranceCompany":"MNO",
+        "amount":"123456",
+         "s_Date":"31/01/2019 06:12 AM",
+        "e_Date":"31/01/2019 06:12 AM",
+        "status":"pending",
+        "criteria":{
+            "temp":"30",
+            "rain":"5",
+            "snow":true
+
+        }
+    },
+    {
+        "policyNo":4,
+        "customerName":"Raj",
+        "venue":"Delhi",
+        "insuranceCompany":"ABC",
+        "amount":"123456",
+         "s_Date":"31/01/2019 06:12 AM",
+        "e_Date":"31/01/2019 06:12 AM",
+        "status":"pending",
+        "criteria":{
+            "temp":"30",
+            "rain":"5",
+            "snow":true
+
+        }
+        
+    },
+    {
+        "policyNo":5,
+        "customerName":"Sansa",
+        "venue":"Bombay",
+        "insuranceCompany":"MNO",
+        "amount":"123456",
+         "s_Date":"31/01/2019 06:12 AM",
+        "e_Date":"31/01/2019 06:12 AM",
+        "status":"active",
+        "criteria":{
+            "temp":"30",
+            "rain":"5",
+            "snow":true
+
+        }
+        
+    },
+    {
+        "policyNo":6,
+        "customerName":"Arya",
+        "venue":"UP",
+        "insuranceCompany":"SDK",
+        "amount":"123456",
+         "s_Date":"31/01/2019 06:12 AM",
+        "e_Date":"31/01/2019 06:12 AM",
+        "status":"pending",
+        "criteria":{
+            "temp":"30",
+            "rain":"5",
+            "snow":true
+
+        }
+        
+    }
+     
+]

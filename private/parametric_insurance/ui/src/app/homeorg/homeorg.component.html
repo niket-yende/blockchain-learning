@@ -1,0 +1,99 @@
+<br/>
+<br/>
+
+<div *ngIf="atSubmit" class="linePreloader"></div>
+<div class="container container-styles">
+<div class="row">
+			<div class="panel panel-primary"  style="background-color:rgb(235,235,235);">
+        <div class="header">
+        <h3>Create Policy</h3>
+        </div>
+				<div class="panel-body padding" >
+		      <form name="form"  (ngSubmit)="onSubmit()" #f="ngForm" style="padding: 5px ">
+            <div class="form-group" style="padding-left:8%;padding-right:9%;">
+               
+                <label for="customerName">Customer Name<span style="color:red">*</span></label><br/>
+               
+                <input type="text" class="form-control" name="customerName" [(ngModel)]="model.customerName" #customerName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && customerName.invalid }" required />
+           
+            </div>
+            <br/>
+
+
+            <div class="form-group" style="padding-left:8%;padding-right:9%;" >
+                <label for="location">Venue<span style="color:red">*</span></label><br/>
+                <input type="text" class="form-control"  name="location" [(ngModel)]="model.location" #location="ngModel" [ngClass]="{ 'is-invalid': f.submitted && location.invalid }" required />
+            </div>
+            <br/>
+            <div class="row">
+            <div class="col-md-offset-1 col-md-4">
+            <div class="form-group">
+                <label for="insuranceCompanyName">Insurance Company<span style="color:red">*</span></label><br/>
+                <input type="text" class="form-control"  name="insuranceCompanyName" [(ngModel)]="model.insuranceCompanyName" #insuranceCompanyName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && insuranceCompanyName.invalid }" required />
+            </div>
+              </div>
+              <div class="col-md-offset-2 col-md-4">
+            <div class="form-group">
+                <label for="amount">Insurance Amount<span style="color:red">*</span></label><br/>
+                <input type="text" class="form-control"  name="amount" [(ngModel)]="model.amount" #amount="ngModel" pattern="[0-9]*(.[0-9]*)?" [ngClass]="{ 'is-invalid': f.submitted && amount.invalid }" required />
+            </div>
+              </div>
+      
+            </div>
+            <br/>
+        <div class="row">
+          <div class="col-md-offset-1 col-md-4">
+            <div class="form-group">
+            <label for="startDate">Start date<span style="color:red">*</span></label><br/>
+            <input [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1"  class="form-control" name="startDate" [(ngModel)]="model.startDate" #startDate="ngModel" placeholder="mm/dd/yyyy hh:mm" required>
+            <owl-date-time [pickerMode]="'dialog'" #dt1></owl-date-time>
+            </div>
+          </div>
+     
+          <div class="col-md-offset-2 col-md-4">
+            <div class="form-group">
+            <label for="endDate">End date<span style="color:red">*</span></label><br/>
+            <input [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2"  [min]="model.startDate" class="form-control" name="endDate" [(ngModel)]="model.endDate" #endDate="ngModel"  placeholder="mm/dd/yyyy hh:mm" required >
+            <owl-date-time [pickerMode]="'dialog'" #dt2></owl-date-time>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-md-offset-1 col-md-6">
+            <div class="form-group" >
+            <label for="insuranceCriteria">Criteria</label><br/>
+            <input type="checkbox" id="temp_cri" (click)="onTemp()"><span style="font-family:Georgia"> Temperature</span> &nbsp; &nbsp; 
+              
+            <div *ngIf="temp" >
+            <input class="inputForm" type="number"  placeholder="Min Temp"  name="min_threshold" [(ngModel)]="min_temp" (input)="calcTemp($event)" #minthreshold="ngModel"  required/> &nbsp;
+            <input class="inputForm"  type="number" [min]="min_temp" placeholder="Max Temp"  name="max_threshold" [(ngModel)]="max_temp" (input)="calcTemp($event)" #maxthreshold="ngModel"  required/>&nbsp;
+            <input class="inputForm" type="text" readonly placeholder="Threshold" name="t_threshold" [(ngModel)]="model.insuranceCriterias.temp" #t_threshold="ngModel"  required/>
+            
+          </div>
+
+            <input type="checkbox" id="myCheck" (click)="onRain()" style="background-color:#f4f4f4"><span style="font-family:Georgia">Rain</span> &nbsp; &nbsp; 
+            <div *ngIf="rain">
+                <input class="inputForm" type="number"  placeholder="Min Limit"  name="minr_threshold" [(ngModel)]="min_rain" (input)="calcRain($event)" #minrthreshold="ngModel"  required/> &nbsp;
+                <input class="inputForm" type="number"  [min]="min_rain" placeholder="Max Limit"  name="maxr_threshold" [(ngModel)]="max_rain" (input)="calcRain($event)" #maxrthreshold="ngModel"  required/> &nbsp;
+                <input class="inputForm" type="text"  readonly placeholder="Threshold"  name="r_threshold" [(ngModel)]="model.insuranceCriterias.rain" #r_threshold="ngModel"  required/>
+          
+  
+            
+          </div>
+            <input type="checkbox" id="myCheck" (click)="onSnow()"><span style="font-family:Georgia">Snow</span>
+            </div>
+          </div>
+        </div>
+    
+        <br/>
+        <div class="form-group" style="text-align:center;">
+            <button type="submit" [disabled]="!f.form.valid"  class="btn btn-primary">Submit</button>
+        </div>
+		      </form>
+
+			</div>
+    </div>
+  </div>
+		</div>
+		<br><br>

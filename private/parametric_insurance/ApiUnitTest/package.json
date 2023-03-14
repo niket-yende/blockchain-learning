@@ -1,0 +1,21 @@
+{
+  "name": "apiunittest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --timeout 15000"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1"
+  },
+  "dependencies": {
+    "should": "^13.2.3"
+  }
+}

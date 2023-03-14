@@ -1,0 +1,44 @@
+.container-styles{
+	position: relative !important; 
+
+
+	padding-top:12% !important;
+	padding-left:24%;
+	padding-right:24% ;
+}
+
+@media (min-width: 1200px)
+and (max-width : 1960px) {
+.container {
+    width: 70%;
+}
+}
+
+.link-underline{
+   color:#337ab7;
+    text-decoration: underline;
+}
+
+.error{
+    color: red;
+    position:center;
+    left:50px;
+}
+
+
+
+
+.ng-valid[required] {
+	border-left: 5px solid #42A948; /* green */
+}
+
+.ng-dirty.ng-invalid[required] {
+	border-left: 5px solid #a94442; /* red */
+}
+
+
+.active a{
+    background-color: seagreen !important;
+}
+
+

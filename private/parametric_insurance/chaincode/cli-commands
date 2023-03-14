@@ -1,0 +1,126 @@
+{"name":"test user","email":"testuser@gmail.com","address":"Bangalore","contact":"+9199xxxxx991"}
+
+{"name":"icici","email":"insurance@icic.com","contact":"+9199xxxxx991","address":"Bangalore"}
+
+{"customerName":"test user","insuranceCompanyName":"icici","amount":"200000.00","insuranceCriterias":{"rain":"6","temp":"40"},"startDate":"2019-01-14T06:59:23Z","endDate":"2019-01-15T06:27:43Z"."location":"Bangalore"}
+
+{"location":"Bangalore","weatherCriterias":{"rain":"10","snow":"false","temp":"32.00"}}
+
+
+
+
+peer chaincode install -n customcc8 -v 1.0 -p github.com/chaincode/custom_chaincode/
+ 
+peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n customcc8 -v 1.0 -c '{"Args":[""]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')"
+ 
+peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n customcc8 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["createCustomer","{\"customerName\":\"Niket\",\"customerEmail\":\"test\",\"customerAddress\":\"Bangalore\",\"customerContact\":\"99907899\”}”]}’
+ 
+peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n customcc8 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["createInsuranceCompany","{\"companyName\":\"infosys\",\"companyEmail\":\"test\",\"companyAddress\":\"Bangalore\",\"companyContact\":\"99907899\”}”]}’
+ 
+peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n customcc8 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["registerInsuranceContract","{\"customerName\":\"Niket\",\"companyName\":\"infosys\",\"insuredAmount\":\"100000.00\",\"insuranceCriterias\":{\"rain\":\"7\"},\"startDate\":\"2019-01-14T06:51:36Z\",\"endDate\":\"2019-01-18T06:51:36Z\",\"location\":\"Bangalore\",\"status\":\"INACTIVE\"}"]}'
+ 
+peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n customcc8 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["generateWeatherReport","{\"dateTime\":\"2019-01-21T06:51:36Z\",\"location\":\"Bangalore\",\"weatherCriterias\":{\"rain\":\"3\"}}"]}'
+
+
+peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n customcc8 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["registerInsuranceContract","{\"customerName\":\"Niket\",\"companyName\":\"infosys\",\"insuredAmount\":\"100000.00\",\"insuranceCriterias\":{\"rain\":\"7\"},\"startDate\":\"2019-01-21T09:51:36Z\",\"endDate\":\"2019-01-21T18:51:36Z\",\"location\":\"Bangalore\",\"status\":\"ACTIVE\"}"]}'
+
+
+peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n customcc8 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["generateWeatherReport","{\"dateTime\":\"2019-01-21T11:51:36Z\",\"location\":\"Bangalore\",\"weatherCriterias\":{\"rain\":\"8\",\"temp\":\"34\",\"snow\":false}}"]}'
+
+
+peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n customcc8 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["queryState","{\"dateTime\":\"2019-01-21T11:51:36Z\",\"location\":\"Bangalore\",\"weatherCriterias\":{\"rain\":\"8\",\"temp\":\"34\",\"snow\":false}}"]}'
+
+
+{"funcName":"queryState", "args":{"selector":{"docType":"contract","insuranceCompanyName":"insuranceCompany"}}
+
+
+peer chaincode install -n marbles -v 1.0 -p github.com/chaincode/marbles02/go
+
+peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n marbles -v 1.0 -c '{"Args":["init"]}' -P "OR ('Org0MSP.peer','Org1MSP.peer')"
+
+peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n marbles --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["initMarble","marble1","blue","35","tom"]}'
+
+
+peer channel create -o orderer.example.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx 
+
+
+peer channel create -o orderer.example.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx 
+
+
+Non tls setup
+export CHANNEL_NAME=mychannel
+
+peer channel create -o orderer.example.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx
+
+peer channel join -b mychannel.block
+
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp CORE_PEER_ADDRESS=peer0.org2.example.com:7051 CORE_PEER_LOCALMSPID="Org2MSP" peer channel join -b mychannel.block
+
+peer channel update -o orderer.example.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/Org1MSPanchors.tx 
+
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp CORE_PEER_ADDRESS=peer0.org2.example.com:7051 CORE_PEER_LOCALMSPID="Org2MSP" peer channel update -o orderer.example.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/Org2MSPanchors.tx
+
+
+peer chaincode install -n customcc -v 1.0 -p github.com/custom_chaincode/
+ 
+peer chaincode instantiate -o orderer.example.com:7050 -C $CHANNEL_NAME -n customcc -v 1.0 -c '{"Args":[""]}' -P "OR ('Org1MSP.peer','Org2MSP.peer')"
+ 
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n customcc --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["createCustomer","{\"customerName\":\"Niket\",\"customerEmail\":\"test\",\"customerAddress\":\"Bangalore\",\"customerContact\":\"99907899\"}"]}'
+ 
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n customcc --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["createInsuranceCompany","{\"companyName\":\"infosys\",\"companyEmail\":\"test\",\"companyAddress\":\"Bangalore\",\"companyContact\":\"99907899\”}”]}’
+ 
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n customcc --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["registerInsuranceContract","{\"customerName\":\"Niket\",\"companyName\":\"infosys\",\"insuredAmount\":\"100000.00\",\"insuranceCriterias\":{\"rain\":\"7\"},\"startDate\":\"2019-01-14T06:51:36Z\",\"endDate\":\"2019-01-18T06:51:36Z\",\"location\":\"Bangalore\",\"status\":\"INACTIVE\"}"]}'
+ 
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n customcc --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["generateWeatherReport","{\"dateTime\":\"2019-01-21T06:51:36Z\",\"location\":\"Bangalore\",\"weatherCriterias\":{\"rain\":\"3\"}}"]}'
+
+
+peer chaincode install -n logisticscc5 -v 1.0 -p github.com/logistics/
+
+peer chaincode instantiate -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 -v 1.0 -c '{"Args":[""]}' -P "OR ('Org1MSP.peer','Org2MSP.peer')"
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["createActor","{\"id\":\"amazon\",\"type\":\"seller\",\"location\":\"bangalore\"}"]}'
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["createActor","{\"id\":\"bluedart\",\"type\":\"logistics\",\"location\":\"chennai\"}"]}'
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["createActor","{\"id\":\"Niket\",\"type\":\"buyer\",\"location\":\"goa\"}"]}'
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["createShipment","{\"shipmentID\":\"ABC\",\"sellerID\":\"amazon\",\"buyerID\":\"Niket\",\"lgpID\":\"bluedart\"}"]}'
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["updateShipmentStatus","{\"shipmentID\":\"ABC\",\"updatedStatus\":\"In-Transit\"}"]}'
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["addTimeRasterDetail","{\"shipmentID\":\"ABC\",\"temperature\":\"18.6\"}"]}'
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["addTimeRasterDetail","{\"shipmentID\":\"ABC\",\"temperature\":\"22.6\"}"]}'
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["addTimeRasterDetail","{\"shipmentID\":\"ABC\",\"temperature\":\"28.6\"}"]}'
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["addTimeRasterDetail","{\"shipmentID\":\"ABC\",\"temperature\":\"28.2\"}"]}'
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["addTimeRasterDetail","{\"shipmentID\":\"ABC\",\"temperature\":\"25.6\"}"]}'
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["generateSellerView","{\"sellerID\":\"amazon\"}"]}'
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["generateLogisticsView","{\"lgpID\":\"bluedart\"}"]}'
+
+//Now the logistics provider updates status to delivered
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["updateShipmentStatus","{\"shipmentID\":\"ABC\",\"updatedStatus\":\"Delivered\"}"]}'
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["generateBuyerView","{\"buyerID\":\"Niket\"}"]}'
+
+//Buyer accepts or rejects based on temp breach
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["updateShipmentStatus","{\"shipmentID\":\"ABC\",\"updatedStatus\":\"Rejected\"}"]}'
+
+peer chaincode invoke -o orderer.example.com:7050 -C $CHANNEL_NAME -n logisticscc5 --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c '{"Args":["getHistoryForShipment","ABC"]}'
+
+{"selector":{"docType":"timeRaster","shipmentID":"ABC","timeRasterTimeStamp":{"$lte": 1572092424953, "$gte": 1571090284963}}}
+
+{
+   "selector": {
+      "docType": "timeRaster",
+      "shipmentID": "ABC",
+      "timeRasterTimeStamp": {
+         "$lt": 1572092413992,
+         "$gt": 1511090284963
+      }
+   }
+}

@@ -1,0 +1,1 @@
+{"index":{"fields":["docType","location"]}, "name":"indexWeather", "ddoc":"indexWeatherDoc", "type":"json"}

@@ -1,0 +1,7 @@
+{
+  "channel_id": "mychannel",
+  "chaincode_id": "customcc",
+  "peer_url": "grpc://localhost:7051",
+  "orderer_url": "grpc://localhost:7050",
+  "user_id": "admin"
+}

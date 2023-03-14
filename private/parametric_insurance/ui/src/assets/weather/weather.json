@@ -1,0 +1,13 @@
+{
+  "_id": "Bangalore",
+  "_rev": "1-ae35295b00bf6bed0c19c4957d0a192c",
+  "dateTime": "2019-01-21T06:51:36Z",
+  "docType": "weatherObject",
+  "location": "Bangalore",
+  "reportID": "REPO-BAN-20190121065136",
+  "weatherCriterias": {
+    "rain": 7,
+    "temp": 35.5
+  },
+  "~version": "36:0"
+}

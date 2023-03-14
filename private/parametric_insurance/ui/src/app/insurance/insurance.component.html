@@ -1,0 +1,141 @@
+
+<nav class="navbar navbar-inverse" style="background-color:black;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/insuranceCompany/{{name}}" style="color:white;"><span class="glyphicon glyphicon-user"></span> {{name}}</a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tabs">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+      </button>
+    </div>
+    
+    <div class="collapse navbar-collapse" id="tabs">
+      <ul class="nav navbar-nav" style="color:white;display:flex;">
+        <li><button class="btn btn-default navbar-btn" (click)="claimed()"><span class="glyphicon glyphicon-th-list" style="color:rgba(45, 179, 0, 0.8)"></span> Claimed</button>  </li>
+         <li><button class="btn btn-default navbar-btn" (click)="active()"><span class="glyphicon glyphicon-th-list" style="color:rgba(0, 136, 204, 0.9)"></span> Active</button>   </li>
+          <li><button class="btn btn-default navbar-btn" (click)="inactive()"><span class="glyphicon glyphicon-th-list" style="color:rgba(139, 136, 136, 0.9)"></span> Inactive</button>   </li>
+          <li><button class="btn btn-default navbar-btn" (click)="unclaimed()"><span class="glyphicon glyphicon-th-list" style="color:rgba(255, 102, 0, 0.9)"></span> Unclaimed</button>   </li>
+        </ul>
+      <ul class="nav navbar-nav navbar-right" style="color:white;">
+      <li><a routerLink="/" style="color:white;"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div *ngIf="!atLoad" class="linePreloader"></div>
+
+<div class="container container-styles">
+			<div class="panel panel-primary"  style="background-color:rgb(235,235,235);">
+				<div class="panel-body padding">
+          <div *ngIf="pie_chart">
+            <div class="row">
+              <div class="col-md-7">
+                <canvas baseChart
+                  [data]="pieChartData"
+                  [labels]="pieChartLabels"
+                  [colors]="pieChartColor"
+                  [chartType]="pieChartType"
+                  (chartClick)="chartClicked($event)"
+                  (chartHover)="chartHovered($event)" 
+                  
+                  responsive="true">
+                </canvas>
+              </div>
+              <p-toast [style]="{marginTop: '13%',marginRight:'25%'}" position="top-right" key="tl"></p-toast>
+            </div>
+	        </div>
+          <div>
+            <div class="col-md-offset-7 col-sm-5 ">
+              <div class="input-group stylish-input-group">
+                <input type="text" class="form-control" pInputText size="50" placeholder="Search by id,customer,location"  (input)="dt.filterGlobal($event.target.value, 'contains')">
+                <span class="input-group-addon">
+                  <button type="submit">
+                      <span class="glyphicon glyphicon-search"></span>
+                  </button>  
+                </span>
+              </div>
+            </div>
+            <br/>
+            <br/>
+            <p-table #dt class="table" [value]="contracts1"  [paginator]="true" [rows]="5" [responsive]="true" 
+                [globalFilterFields]="['Record.customerName','Record.contractID','Record.location']">
+              <ng-template pTemplate="caption">
+                  <span > {{st}} Contracts</span>
+              </ng-template>
+              <ng-template pTemplate="header" >
+                <tr>
+                  <th style='width: 6%;'>#</th>
+                  <th style='width: 160px;'>Contract Id</th>
+                  <th>Customer</th>
+                  <th>Location</th>
+                  <th>Insurance Amount</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Status</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-i="rowIndex" let-val>
+                <tr>
+                  <td>{{i+1}}.</td>
+                  <td><button class="btn btn-link"  (click)="details(val.Record.contractID)"  
+                          style="border:none;  outline:none;" data-target="addDialog">{{val.Record.contractID}}</button></td>
+                  <td>{{val.Record.customerName}}</td>
+                  <td>{{val.Record.location}}</td>
+                  <td>{{val.Record.insuredAmount}}</td>
+                  <td>{{val.Record.startDate}}</td>
+                  <td>{{val.Record.endDate}}</td>
+                <td><button class="btn btn-link"  (click)="weatherDetails(val.Record.location,val.Record.startDate,val.Record.endDate)"
+                  style="border:none;  outline:none;" data-target="addWeatherDialog">{{val.Record.status}}</button></td>
+              </tr>
+            </ng-template>
+          </p-table >
+          <p-dialog id="addDialog" [(visible)]="each_detail" showEffect="fade" [modal]="true" [resizable]="true"
+              [draggable]="false" [maximizable]="true" [style]="{width: '600px'}"  [responsive]="true">
+
+            <p-header>
+              Contract Details
+            </p-header>
+            <div *ngFor="let val of each_data">
+              <label>Contract Id :</label> {{val.Record.contractID}}<br/><br/>
+              <label>Name :</label> {{val.Record.customerName}} <br/><br/>
+              <label>Location : </label>{{val.Record.location}} <br/><br/>
+              <label>Document Type :</label> {{val.Record.docType}} <br/><br/>
+              <label>Insurance Company :</label> {{val.Record.insuranceCompanyName}}<br/><br/>
+              <label>Insurance Amount :</label> {{val.Record.insuredAmount}}<br/><br/>
+              <label>Start Date :</label> {{val.Record.startDate}}<br/><br/>
+              <label>End Date :</label> {{val.Record.endDate}}<br/><br/>
+              <label>Status :</label> {{val.Record.status}}<br/><br/>
+              <label>Criterias & Threshold :</label> {{val.Record.insuranceCriterias|json}}<br/><br/>
+            </div>
+
+            <p-footer>
+              <button type="button" pButton icon="pi pi-close" (click)="each_detail=false" label="Close" class="ui-button-secondary">Close</button>
+            </p-footer>
+        </p-dialog>
+
+        <p-dialog id="addWeatherDialog" [(visible)]="each_weather" showEffect="fade" [modal]="true" [resizable]="true"
+              [draggable]="false" [maximizable]="true" [style]="{width: '600px'}"  [responsive]="true">
+          <p-header>
+            Weather Report
+          </p-header>
+          <div>
+            <label>Report Id : </label> {{reportId}}<br/><br/>
+            <label>Weather Criterias : </label> {{weather_criteria|json}}<br/><br/>
+          </div>
+           
+          <p-footer>
+              <button type="button" pButton icon="pi pi-close" (click)="each_weather=false" label="Close" class="ui-button-secondary">Close</button>
+          </p-footer>
+
+        </p-dialog>
+				</div>
+			</div>
+</div>
+
+

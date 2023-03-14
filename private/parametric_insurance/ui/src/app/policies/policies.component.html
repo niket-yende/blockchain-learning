@@ -1,0 +1,83 @@
+<br>
+<br>
+<br>
+<br>
+<div *ngIf="!check" class="linePreloader"></div>
+<div class="container container-styles">
+			<div class="panel panel-primary"  style="background-color:rgb(235,235,235);">
+        <div class="header">
+            <h3>Policy List</h3>
+         </div>
+				<div class="panel-body padding">
+           <div class="col-md-offset-8 col-sm-4 ">
+            <div class="input-group stylish-input-group">
+              
+            <input type="text" class="form-control" pInputText size="50" placeholder="Search"  (input)="dt.filterGlobal($event.target.value, 'contains')">
+             <span class="input-group-addon">
+                <span class="glyphicon glyphicon-search"></span>
+              </span>
+              </div>
+            </div>
+            <br/>
+            <br/>
+        
+          <p-table #dt class="table" [value]="customerData" [paginator]="true" [rows]="5" [responsive]="true" [globalFilterFields]="['Record.contractID','Record.customerName','Record.location','Record.insuranceCompanyName','Record.status']">
+             
+            <ng-template pTemplate="header">
+							<tr>
+								<th style='width: 6%;'>#</th>
+								<th style='width: 160px;'>Contract ID</th>
+								<th>Customer</th>
+								<th>Location</th>
+                <th>Insurance Company</th>
+                <th>Start Date</th>
+                <th>End Date </th>
+                <th>Status</th>
+							</tr>
+					  </ng-template>
+            <ng-template pTemplate="body"   let-i="rowIndex" let-val>
+              <tr  (click)="details(val.Record.contractID)">
+              <td >{{i+1}}.</td>
+              <td><button class="btn btn-link"  (click)="details(val.Record.contractID)"  style="border:none;  outline:none;" data-target="addDialog">{{val.Record.contractID}}</button></td>
+              <td>{{val.Record.customerName}}</td>
+              <td>{{val.Record.location}}</td>
+               <td>{{val.Record.insuranceCompanyName}}</td>
+              <td>{{val.Record.startDate}}</td>
+              <td>{{val.Record.endDate}}</td>
+             <td>{{val.Record.status}}</td>
+          </tr>
+           </ng-template>
+
+           </p-table >
+          </div>
+          <p-dialog id="addDialog" [(visible)]="each_detail" showEffect="fade" [modal]="true" [resizable]="false"
+              [draggable]="false" [responsive]="true" [maximizable]="true" [style]="{width: '700px'}">
+            <p-header class="center" >
+               Policy Details
+            </p-header>
+         
+          
+            <div *ngFor="let val of each_data" >
+            <label> Contract ID : </label> {{val.Record.contractID}}<br/><br/>
+              <label> Name : </label> {{val.Record.customerName}} <br/><br/>
+              <label> Location : </label> {{val.Record.location}} <br/><br/>
+            
+              <label> Insurance Company : </label> {{val.Record.insuranceCompanyName}}<br/><br/>
+              <label> Insurance Amount : </label> {{val.Record.insuredAmount}}<br/><br/>
+              <label> Start Date : </label> {{val.Record.startDate}}<br/><br/>
+              <label> End Date : </label> {{val.Record.endDate}}<br/><br/>
+              <label> Issue Date : </label> {{val.Record.issueDate}}<br/><br/>
+              <label> Status : </label> {{val.Record.status}}<br/><br/>
+            <label>  Criterias & Threshold : </label> {{val.Record.insuranceCriterias|json}}
+            </div>
+            
+            <p-footer>
+              <button type="button" pButton icon="pi pi-close" (click)="each_detail=false" label="Close" class="ui-button-secondary">Close</button>
+            </p-footer>
+
+        </p-dialog>
+         
+				</div>
+
+		
+</div>

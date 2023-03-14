@@ -1,0 +1,9 @@
+{ 
+    "weatherCriterias":{
+                                    "temp":20,
+                                    "rain":6,
+                                    "snow":false
+                    },
+    "dateTime":"2019-01-18T06:51:36Z",
+    "location":"Bangalore"
+    }

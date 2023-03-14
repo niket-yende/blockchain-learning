@@ -1,0 +1,70 @@
+.container-styles{
+  position:relative; 
+
+  padding-top:5%;
+  padding-left:10%;
+  padding-right:10%;
+
+}
+
+h3 {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 25px;
+	background-color: #369;
+  text-align:center;
+  color:white; 
+}
+
+body {  font-family: Helvetica, sans-serif; padding: 40px}
+a {text-decoration: none}
+
+/* PROGRESS TRACKER */
+.progress-tracker {
+  display: flex;
+  margin: 0;
+  counter-reset: item;
+  list-style-type: none;
+  padding: 0
+}
+.progress-tracker .step:before {
+  background: #AAAAAA;
+  border-radius: 20px;
+  color: #FFFFFF;
+  content: "";
+  font-size: 18px;
+  line-height: 1.8em;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  content: counter(item) "  "; 
+  counter-increment: item;
+}
+.progress-tracker .step {flex: 1;}
+.progress-tracker .step .step-name{
+	display: inline-flex;
+  margin: 0 0 0 15px;	
+  background: #FFFFFF;
+  height: 35px;
+  width: 100%;
+  align-items: center;
+  padding: 0 30px;
+  color: #1b1717;
+  line-height: 1.2em;
+  font-size: 13px;
+}
+.progress-tracker .step:last-child .step-name{ border-radius: 0 20px 20px 0; width: calc(100% - 45px)}
+.progress-tracker .step.active .step-name {color: #333333; font-weight: bold;}
+.progress-tracker .step.active:before {background: #46c0f5;}
+.progress-tracker .step.completed:before {background: #31ba0b; content: "\2714"}
+
+button{
+  background: inherit;
+  border:none;
+  outline:none;
+}

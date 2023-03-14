@@ -1,0 +1,148 @@
+.container-styles{
+  position:relative; 
+
+  padding-top:6%;
+  padding-left:15%;
+  padding-right:15%; 
+}
+.container{
+	width: 75%;
+}
+
+.active a{
+  background-color: seagreen !important;
+}
+
+.form-control{
+  background-color: #f4f4f4;
+}
+
+input[type="checkbox"] {
+ color: #f4f4f4;
+}
+
+.link-underline{
+   color:#337ab7;
+   text-decoration: underline;
+}
+
+h3 {
+   font-family: 'Times New Roman', Times, serif;
+   font-size: 25px;
+   background-color: #369;
+   text-align:center;
+   color:white; 
+}
+.inputForm{
+	background-color: #f4f4f4;
+    width: 110px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+	color: #555;
+	background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+label{
+   font-family: Cambria;
+   font-size: 15px;
+}
+
+.error{
+   color: red;
+   position:relative;
+   left:50px;
+}
+
+
+.ng-valid[required] {
+	border-left: 5px solid #42A948; /* green */
+}
+
+.ng-dirty.ng-invalid[required] {
+	border-left: 5px solid #a94442; /* red */
+}
+
+.checkbox {
+	padding-left: 20px;
+}
+
+.checkbox label {
+	display: inline-block;
+	position: relative;
+	padding-left: 5px;
+}
+
+.checkbox label::before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	width: 17px;
+	height: 17px;
+	left: 0;
+	margin-left: -20px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	background-color: #fff;
+	-webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+	-o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+	transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.checkbox label::after {
+	display: inline-block;
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	left: 0;
+	top: 0;
+	margin-left: -20px;
+	padding-left: 3px;
+	padding-top: 1px;
+	font-size: 11px;
+	color: #555555;
+}
+.input-field {
+  width: 60%;
+  padding: 10px;
+  outline: none;
+}
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+.checkbox input[type="checkbox"] {
+	opacity: 0;
+}
+
+.checkbox input[type="checkbox"]:focus+label::before {
+	outline: thin dotted;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+
+.checkbox input[type="checkbox"]:checked+label::after {
+	font-family: 'FontAwesome';
+	content: "\f00c";
+}
+
+.row.vdivide [class*='col-']:not(:last-child ):after {
+	background: #e0e0e0;
+	width: 2px;
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	min-height: 70px;
+}
+
+
+.active{
+    background-color: #4CAF50;
+}
+
+

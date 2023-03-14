@@ -1,0 +1,101 @@
+.btn.btn-default.navbar-btn {
+    background-color: transparent;
+    border:none;
+    color:white;
+    outline:none;
+
+}
+.btn.btn-default.navbar-btn:focus{
+    color: #fff;
+    background-color: cadetblue;
+    border-color: cadetblue;
+    
+}
+.btn.btn-default.navbar-btn:active{
+    color: #fff;
+    background-color: cadetblue;
+    border-color: cadetblue;
+    
+}
+
+.container-styles{
+    flex-flow: row wrap;
+   	position: relative; 
+    padding-top: 4%!important;
+	padding-left: 5%!important;
+    padding-right: 5%!important;
+}
+
+th{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    text-align:center;
+    white-space: pre-wrap;
+    overflow: hidden;
+}
+
+td>button{
+     white-space: pre-wrap;
+}
+
+td {
+  white-space: pre-wrap;
+  overflow: hidden;
+  text-overflow: clip;
+  text-align:center; 
+}
+
+.ui-table .ui-table-caption {
+  background-color: #ff4081;
+  color: #337ab7;
+  border: 1px solid #3f51b5;
+  padding: 0.571em 1em;
+  text-align: center;
+}
+
+p-table span{
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+p-table tr th {
+  background-color:#b3d9ff;
+} 
+
+p-table tr:hover{
+  background-color:#d9d9d9;
+}
+
+tr:hover {
+  background-color:#d9d9d9;
+}
+
+.stylish-input-group .input-group-addon{
+  background: white !important; 
+}
+
+.stylish-input-group .form-control{
+  border-right:0; 
+  box-shadow:0 0 0; 
+  border-color:#ccc;
+}
+
+.stylish-input-group button{
+  border:0;
+  background:transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

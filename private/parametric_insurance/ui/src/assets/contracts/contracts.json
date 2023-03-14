@@ -1,0 +1,93 @@
+ [
+     {
+        "contractId":1,
+        "docType":"Contract",
+        "customer":"Raj",
+        "location":"Delhi",
+        "insuranceCompany":"ABC",
+        "insuredAmount":"123456",
+         "startDate":"31/01/2019 06:12 AM",
+        "endDate":"31/01/2019 06:12 AM",
+        "status":"unclaimed",
+        "insuranceCriterias": {
+            "temp":"30",
+            "rain":"5",
+            "snow":true
+
+        }  
+        
+    },
+
+    {
+        "contractId":2,
+        "docType":"Contract",
+        "customer":"Rahul",
+        "location":"Delhi",
+        "insuranceCompany":"ABC",
+        "insuredAmount":"123456",
+         "startDate":"31/01/2019 06:12 AM",
+        "endDate":"31/01/2019 06:12 AM",
+        "status":"claimed",
+        "insuranceCriterias": {
+            "temp":"30",
+            "rain":"5",
+            "snow":true
+
+        }  
+        
+    },
+    {
+        "contractId":3,
+        "docType":"Contract",
+        "customer":"Ram",
+        "location":"Goa",
+        "insuranceCompany":"ABC",
+        "insuredAmount":"123456",
+         "startDate":"31/01/2019 06:12 AM",
+        "endDate":"31/01/2019 06:12 AM",
+        "status":"inactive",
+        "insuranceCriterias": {
+            "temp":"30",
+            "rain":"5",
+            "snow":true
+
+        }  
+        
+    },
+    {
+        "contractId":4,
+        "docType":"Contract",
+        "customer":"Rohit",
+        "location":"Mumbai",
+        "insuranceCompany":"ABC",
+        "insuredAmount":"123456",
+         "startDate":"31/01/2019 06:12 AM",
+        "endDate":"31/01/2019 06:12 AM",
+        "status":"active",
+        "insuranceCriterias": {
+            "temp":"30",
+            "rain":"5",
+            "snow":true
+
+        }  
+        
+    },
+     {
+        "contractId":5,
+        "docType":"Contract",
+        "customer":"Rakesh",
+        "location":"Bangalore",
+        "insuranceCompany":"ABC",
+        "insuredAmount":"123456",
+         "startDate":"31/01/2019 06:12 AM",
+        "endDate":"31/01/2019 06:12 AM",
+        "status":"active",
+        "insuranceCriterias": {
+            "temp":"30",
+            "rain":"5",
+            "snow":true
+
+        }  
+        
+    }
+ ]
