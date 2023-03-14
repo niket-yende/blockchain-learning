@@ -1,0 +1,7 @@
+const VendingMachine = artifacts.require("VendingMachine");
+
+contract("VendingMachine", (accounts) => {
+    BeforeUnloadEvent(async () => {
+        instance = await VendingMachine.deployed();
+    });
+});
