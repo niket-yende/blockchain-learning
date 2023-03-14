@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row header1">
+    <div>
+      <img src="/imgs/logo.png" width="200px">
+    </div>
+  </div>
+  <div class="row top-line">&nbsp</div>
+</div>
+<div class="container">
+  <div class="login-form">
+    <form ng-submit="register()">
+      <h2 style="text-align: center; color: #808080">Register</h2>
+      <div class="form-group">
+        <input type="text" class="form-control" name="Username" ng-model="username" placeholder="Username" required="required">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="password" ng-model="password" placeholder="Password" required="required">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="confirmPassword" ng-model="confirmPassword" placeholder="Confirm Password"
+          required="required">
+      </div>
+      <div class="form-group">
+        <select class="browser-default custom-select form-control" name="role" ng-model="role" required>
+          <option value="" selected="selected" disabled>Please select User Role</option>
+          <option value="ARRANGER">Lead Arranger</option>
+          <option value="LENDER">Lender</option>
+          <option value="BORROWER">Borrower</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="accountNumber" ng-model="accountNumber" placeholder="Bank Account Number" required="required">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="bankName" ng-model="bankName" placeholder="Bank Account Name" required="required">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-lg btn-block">Register Now</button>
+      </div>
+      <div class="text-center">Already have an account?
+        <a href="party-login">Sign in</a>
+      </div>
+    </form>
+  </div>
+</div>

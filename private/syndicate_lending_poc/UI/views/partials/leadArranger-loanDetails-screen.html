@@ -1,0 +1,35 @@
+<div class="container formdata">
+  <br>
+  <br>
+  <form class="form-horizontal">
+    <div class="panel panel-default customPanel">
+      <div class="panel-heading md-title tableHeading">Check Balance</div>
+      <div class="panel-body container">
+        <br>
+        <div class="form-group row">
+          <label class="control-label col-sm-2" for="loanRef">Loan Reference:</label>
+          <div class="col-sm-4">
+            <select class="browser-default custom-select form-control" name="loanRef" ng-model="lald.loanRef" ng-change="lald.getBalance(lald.loanRef)">
+              <option value="" selected="selected" disabled>Please select Loan Reference</option>
+              <option value={{data}} ng-repeat="data in lald.LoanRefernce1">{{data}}</option>
+            </select>
+          </div>
+        </div>
+        <div ng-show="lald.dataAvailable">
+          <div class="form-group row">
+            <label class="control-label col-sm-2" for="accountId">Account ID:</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" ng-model="lald.accountId" id="accountId" disabled>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-sm-2" for="balance">Balance:</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" ng-model="lald.balance" id="balance" disabled>
+            </div>
+          </div>
+        </div>
+  </form>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,159 @@
+<div>
+  <br>
+  <md-expansion-panel-group md-component-id="panelGroup">
+    <md-expansion-panel md-component-id="SubscriptionPanel">
+      <md-expansion-panel-collapsed style="cursor: pointer;">
+        <div class="md-title expansionHeader">Subscription</div>
+        <div flex></div>
+        <md-expansion-panel-icon style="cursor:pointer;"></md-expansion-panel-icon>
+      </md-expansion-panel-collapsed>
+      <md-expansion-panel-expanded>
+        <md-expansion-panel-header ng-click="bsc.collapse($panel, SubscriptionForm)">
+          <div class="md-title expansionHeader">Subscription</div>
+          <div flex></div>
+          <md-expansion-panel-icon style="cursor:pointer;" ng-click="bsc.collapse($panel, SubscriptionForm)"></md-expansion-panel-icon>
+        </md-expansion-panel-header>
+        <md-expansion-panel-content>
+          <form class="form-horizontal" name="SubscriptionForm">
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="loanRef">Loan Reference:</label>
+              <div class="col-sm-4">
+                <select class="browser-default custom-select form-control" name="loanRef" ng-model="bsc.loanRef" ng-change="bsc.getSubscription(bsc.loanRef)">
+                  <option value="" selected="selected" disabled>Please select Loan Reference</option>
+                  <option value={{data}} ng-repeat="data in bsc.LoanRefernce1">{{data}}</option>
+                </select>
+              </div>
+            </div>
+            <div ng-show="bsc.dataAvailable==true">
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="subscriptionRef">Subscription Reference:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" ng-model="bsc.subscriptionRef" id="subscriptionRef" disabled>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="subscription">Subscription Name:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" ng-model="bsc.subscription" id="subscription" disabled>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="tenure" class="col-sm-2 control-label">Start Date:</label>
+                <div class="col-sm-4">
+                  <input type="text" id="startDate" ng-model="bsc.startDate" class="form-control" disabled>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="tenure" class="col-sm-2 control-label">End Date:</label>
+                <div class="col-sm-4">
+                  <input type="text" id="endDate" ng-model="bsc.endDate" class="form-control" disabled>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="loanAmount" class="control-label col-sm-2">Loan Amount:</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" ng-model="bsc.currency" disabled>
+                </div>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" ng-model="bsc.loanAmount" ng-required="true" disabled>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="tenor">Tenor:</label>
+                <div class="col-sm-4">
+                  <input type="number" class="form-control" ng-model="bsc.tenor" id="tenor" disabled>
+                </div>
+              </div>
+              <br>
+              <div class="panel panel-default customPanel col-sm-6 offset-sm-2">
+                <div class="panel-body">
+                  <md-table-container>
+                    <table md-table md-progress="lsc.loadPromise">
+                      <thead md-head>
+                        <tr md-row>
+                          <th md-column>Lender Name</th>
+                          <th md-column>Size</th>
+                          <th md-column>Approve</th>
+                          <th md-column>Consent</th>
+                        </tr>
+                      </thead>
+                      <tbody md-body>
+                        <tr md-row>
+                          <td md-cell ng-if="bsc.lenderAName=='LenderA'?lender1='ILFS':lender1='SOFTBANK'">{{lender1}}</td>
+                          <td md-cell>USD {{bsc.lenderASubsAmount}} million</td>
+                          <td md-cell>
+                            <input type="checkbox" ng-checked="true" ng-model="approve1">
+                          </td>
+                          <td md-cell>
+                            <input type="checkbox" ng-model="approve2">
+                          </td>
+                        </tr>
+                        <tr md-row>
+                          <td md-cell ng-if="bsc.lenderBName=='LenderA'?lender2='ILFS':lender2='SOFTBANK'">{{lender2}}</td>
+                          <td md-cell>USD {{bsc.lenderBSubsAmount}} million</td>
+                          <td md-cell>
+                            <input type="checkbox" ng-checked="true" ng-model="approve3">
+                          </td>
+                          <td md-cell>
+                            <input type="checkbox" ng-model="approve4">
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </md-table-container>
+                </div>
+              </div>
+              <br>
+              <div class="form-group row">
+                <div class="col-sm-2 offset-sm-2">
+                  <button type="submit" class="btn btn-success btn-block" ng-click="bsc.confirmBidBorrower()">Approve</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </md-expansion-panel-content>
+      </md-expansion-panel-expanded>
+    </md-expansion-panel>
+  </md-expansion-panel-group>
+  <br>
+  <div class="panel panel-default customPanel">
+    <div class="panel-heading md-title tableHeading">Bid State History</div>
+    <div class="panel-body">
+      <md-table-container>
+        <table md-table md-progress="bsc.loadPromise">
+          <thead md-head>
+            <tr md-row>
+              <th md-column>Loan Ref.</th>
+              <th md-column>Subscription Ref.</th>
+              <th md-column>Loan Amount</th>
+              <th md-column>Lender 1</th>
+              <th md-column>Amount</th>
+              <th md-column>Lender 2</th>
+              <th md-column>Amount</th>
+              <th md-column>Status</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row md-select="data" md-select-id="data" md-auto-select ng-repeat="data in bsc.loadHistory | limitTo: bsc.loadTableQuery.limit: (bsc.loadTableQuery.page - 1) * bsc.loadTableQuery.limit"
+              ng-if="bsc.dataStatus == 1">
+              <td md-cell>{{data.loanRef}}</td>
+              <td md-cell>{{data.subscriptionId}}</td>
+              <td md-cell>USD {{data.loanAmount}} million</td>
+              <td md-cell ng-if="data.lenderAName=='LenderA'?lender1='ILFS':lender1='SOFTBANK'">{{lender1}}</td>
+              <td md-cell>USD {{data.lenderASubsAmount}} million</td>
+              <td md-cell ng-if="data.lenderBName=='LenderA'?lender2='ILFS':lender2='SOFTBANK'">{{lender2}}</td>
+              <td md-cell>USD {{data.lenderBSubsAmount}} million</td>
+              <td md-cell>{{data.bidStatus}}</td>
+            </tr>
+            <tr md-row md-auto-select ng-if="bsc.dataStatus == 2 || bsc.dataStatus != 1 && bsc.dataStatus != 2">
+              <td md-cell colspan="4" ng-if="bsc.dataStatus == 2" style="color:#2B593E !important; font-weight:bold;" ng-bind="bsc.loadErrorMsg"></td>
+              <td md-cell colspan="4" ng-if="bsc.dataStatus != 1 && bsc.dataStatus != 2" style="color:red !important; font-weight:bold;"
+                ng-bind="bsc.loadErrorMsg"></td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+      <md-table-pagination md-limit="bsc.loadTableQuery.limit" md-limit-options="[5, 10, 15]" md-page="bsc.loadTableQuery.page"
+        md-total="{{bsc.loadHistory.length}}"></md-table-pagination>
+    </div>
+  </div>

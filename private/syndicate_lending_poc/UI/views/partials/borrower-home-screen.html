@@ -1,0 +1,39 @@
+<md-toolbar class="md-primary main-container">
+    <div class="md-toolbar-tools" ng-controller="WelcomeNoteController">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> <h3 class="md-flex">Borrower</h3></div>
+        <div flex></div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <span style="font-size: 20px">
+                <span class="fa fa-user"></span> {{setName}}</span>
+            <span class="fa fa-sign-out" ng-click="logout('party-login')" style=" cursor:pointer; float: right">
+                <md-tooltip md-direction="left"> Logout </md-tooltip>
+            </span>
+        </div>
+    </div>
+</md-toolbar>
+<div class="row top-line-home">&nbsp</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <md-content class="md-padding homePage">
+                <md-nav-bar md-selected-nav-item="bc.currentNavItem" nav-bar-aria-label="navigation links">
+                    <md-nav-item md-nav-sref="borrower-document" md-nav-sref-active="subitem-active" name="borrowerDocument" md-nav-sref-opts="{reload:true, notify:true}">Document</md-nav-item>
+                    <md-nav-item md-nav-sref="borrower-subscription" md-nav-sref-active="subitem-active" name="borrowerSubscription" md-nav-sref-opts="{reload:true, notify:true}">Subscription</md-nav-item>
+                    <md-nav-item md-nav-sref="borrower-loanDetails" md-nav-sref-active="subitem-active" name="borrowerLoanDetails" md-nav-sref-opts="{reload:true, notify:true}">Loan Details</md-nav-item>
+                    <md-nav-item md-nav-sref="borrower-interestPayment" md-nav-sref-active="subitem-active" name="borrowerInterestPayment" md-nav-sref-opts="{reload:true, notify:true}">Interest Payment</md-nav-item>
+                </md-nav-bar>
+                <span>
+                    <div class="ext-content">
+                        <ui-view></ui-view>
+                    </div>
+            </md-content>
+        </div>
+    </div>
+</div>
+<div class="container">
+    &nbsp;
+    <br>
+    <br>&nbsp;
+    <br>
+    <br>&nbsp;
+</div>

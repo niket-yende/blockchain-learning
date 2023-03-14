@@ -1,0 +1,43 @@
+<md-toolbar class="md-primary main-container">
+  <div class="md-toolbar-tools" ng-controller="WelcomeNoteController">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> <h3 class="md-flex">Lead Arranger</h3></div>
+    <div flex></div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <span style="font-size: 20px">
+        <span class="fa fa-user"></span> {{setName}}</span>
+      <span class="fa fa-sign-out" ng-click="logout('party-login')" style=" cursor:pointer; float: right">
+        <md-tooltip md-direction="left"> Logout </md-tooltip>
+      </span>
+    </div>
+  </div>
+</md-toolbar>
+<div class="row top-line-home">&nbsp</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <md-content class="md-padding homePage">
+        <md-nav-bar md-selected-nav-item="la.currentNavItem" nav-bar-aria-label="navigation links">
+          <md-nav-item md-nav-sref="leadArranger-keydata" md-nav-sref-active="subitem-active" name="leadArrangerKeydata" md-nav-sref-opts="{reload:true, notify:true}">Key Data</md-nav-item>
+          <md-nav-item md-nav-sref="leadArranger-document" md-nav-sref-active="subitem-active" name="leadArrangerDocument" md-nav-sref-opts="{reload:true, notify:true}">Document</md-nav-item>
+          <md-nav-item md-nav-sref="leadArranger-parties" md-nav-sref-active="subitem-active" name="leadArrangerParties" md-nav-sref-opts="{reload:true, notify:true}">Involved Parties</md-nav-item>
+          <md-nav-item md-nav-sref="leadArranger-subscription" md-nav-sref-active="subitem-active" name="leadArrangerSubscription"
+            md-nav-sref-opts="{reload:true, notify:true}">Subscription</md-nav-item>
+          <md-nav-item md-nav-sref="leadArranger-loanDetails" md-nav-sref-active="subitem-active" name="leadArrangerLoanDetails" md-nav-sref-opts="{reload:true, notify:true}">Loan Details</md-nav-item>
+          <md-nav-item md-nav-sref="leadArranger-interestPayment" md-nav-sref-active="subitem-active" name="leadArrangerInterestPayment"
+            md-nav-sref-opts="{reload:true, notify:true}">Interest Payment</md-nav-item>
+        </md-nav-bar>
+        <span>
+          <div class="ext-content">
+            <ui-view></ui-view>
+          </div>
+      </md-content>
+    </div>
+  </div>
+</div>
+<div class="container">
+  &nbsp;
+  <br>
+  <br>&nbsp;
+  <br>
+  <br>&nbsp;
+</div>

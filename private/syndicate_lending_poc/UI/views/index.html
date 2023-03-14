@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "syndicatedloan">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="lubna">
+
+		<title> Syndicate Lending </title>
+	
+		<!-- inject:css -->
+		
+		<link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.min.css"> <!-- Bootstrap Core CSS -->
+		<link rel = "stylesheet" type="text/css" href = "/angularjs-toaster/toaster.min.css"> <!-- Angular Toaster CSS -->
+		<link rel = "stylesheet" type="text/css" href = "/javascripts/util/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
+		<link rel = "stylesheet" type="text/css" href = "/angular-material/angular-material.min.css"> <!-- Angular-material CSS -->
+		<link type="text/css" rel="stylesheet" href="/angular-material-expansion-panel/dist/md-expansion-panel.min.css" />
+		<link type="text/css" rel="stylesheet" href="/angular-material-data-table/dist/md-data-table.min.css" />
+		<link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+		<link rel = "stylesheet" type="text/css" href = "/stylesheets/style.css"> <!-- Custom CSS -->
+		<link rel = "stylesheet" type="text/css" href = "/stylesheets/styling.css">
+		<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+		<!-- endinject -->
+	
+		<base href="/">
+	</head>
+
+	<body ng-cloak>
+		<div  ng-controller="IndexController">
+				<div ui-view></div>
+		</div> 
+		<!--</div>-->
+
+		<!-- inject:js -->
+		<script type = "text/javascript" src="/jquery/dist/jquery.min.js"></script> <!-- jQuery -->
+		<script type = "text/javascript" src="/bootstrap/dist/js/bootstrap.min.js"></script> <!-- Bootstrap Core JavaScript -->
+		<script type = "text/javascript" src="/angular/angular.min.js"></script>
+		<script type = "text/javascript" src="/angular-animate/angular-animate.min.js"></script> <!-- Angular animation -->
+		<script type = "text/javascript" src="/angular-aria/angular-aria.min.js"></script>
+		<script type = "text/javascript" src="/angular-messages/angular-messages.min.js"></script> <!-- Angular messages -->
+		<script type = "text/javascript" src="/angular-cookies/angular-cookies.min.js"></script> <!-- Angular cookies -->
+		<script type = "text/javascript" src="/ngstorage/ngStorage.min.js"></script> <!-- Angular cookies -->
+		<!--<script type = "text/javascript" src="/angular-route/angular-route.min.js"></script> Angular routing -->
+		<script type = "text/javascript" src="/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script type = "text/javascript" src="/angularjs-toaster/toaster.min.js"></script> <!-- Angular toast messages --> 
+		<!--<script type = "text/javascript" src="/javascripts/util/angular-ui-grid/ui-grid.js"></script> <!-- Angular Grid -->
+		<script type = "text/javascript" src="/javascripts/util/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+		<script type = "text/javascript" src="/angular-material/angular-material.min.js"></script> <!-- Angular material -->
+		<script type = "text/javascript" src="/angular-material-expansion-panel/dist/md-expansion-panel.min.js"></script>
+		<script type = "text/javascript" src="/angular-material-data-table/dist/md-data-table.min.js"></script>
+		<script type = "text/javascript" src="/javascripts/mainApp.js"></script> <!-- Custom angular module -->
+		
+		<!--Custom angular services -->
+		<script type = "text/javascript" src="/javascripts/services/rest.service.js"></script>
+		<script type = "text/javascript" src="/javascripts/services/authentication.service.js"></script>
+		<script type = "text/javascript" src="/javascripts/services/authInterceptor.service.js"></script>
+		
+		<!--Custom angular controllers -->
+		<script type = "text/javascript" src="/javascripts/controllers/index.controller.js"></script>
+		<script type = "text/javascript" src="/javascripts/controllers/signup.controller.js"></script>
+		<script type = "text/javascript" src="/javascripts/controllers/login.controller.js"></script>
+		<script type = "text/javascript" src="/javascripts/controllers/leadArranger.controller.js"></script>
+		<script type = "text/javascript" src="/javascripts/controllers/borrower.controller.js"></script>
+		<script type = "text/javascript" src="/javascripts/controllers/lender.controller.js"></script>
+		
+		 <!-- endinject -->
+		
+	</body>
+</html>
+ 

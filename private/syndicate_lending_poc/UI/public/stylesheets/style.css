@@ -1,0 +1,310 @@
+.header1 {
+	overflow: hidden;
+	background-color: rgba(16, 73, 106, 0.70) !important;
+	padding: 20px 10px;
+  }
+  .header1 a {
+	float: left;
+	color: black;
+	text-align: center;
+	padding: 5px;
+	text-decoration: none;
+	font-size: 10px; 
+	line-height: 10px;
+	border-radius: 4px;
+  }
+  .header1 a.logo {
+	font-size: 20px;
+	font-weight: bold;
+	color:white;
+  }
+  @media screen and (max-width: 500px) {
+	.header1 a {
+	  float: none;
+	  display: block;
+	  text-align: left;
+	}
+  }
+  /* .top-line {
+	background-color: #009d78;
+	margin-left: 1px;
+	margin-right: 1px;
+	height: 7px;
+  }
+  .top-line-home {
+	background-color: #009d78;
+	margin-left: 1%;
+	margin-right: 1%;
+	height: 2px;
+  } */
+/************************************************/
+body {
+	/*padding: 50px;
+	background-color: rgb(0, 124, 195);/*rgb(117, 20, 14);*/
+	font: 14px  "Lucida Grande", Helvetica, Arial, sans-serif !important; /* "Courier New", Courier, "Times New Roman"*/
+	height:auto;
+	width:auto;
+	-webkit-font-smoothing: antialiased;
+	background-image: url('/imgs/bg.jpg');
+	
+}
+
+.header {
+	min-height: 40px; 
+	height: 40px; 
+	width: 100%;
+	/* background-color: #F7F4EA !important;
+	color: #457757 !important; */
+}
+
+.login{
+	/* background-color:#fff2cc; */
+	margin: 5% 24% 0% 24%;
+	/* margin: 0% 4% 4% 60% ; */
+	padding: 2%;
+	border-radius: 25px;
+}
+
+.main-container{
+	display: fixed;
+	/*margin-left:-99px;
+	margin-right:-96px;*/
+	/* padding-top: 15px; */
+	margin-bottom:1%;
+	background-color:  rgba(16, 73, 106, 0.70) !important; 
+	padding:0px !important;
+	width: auto;
+	color:  white !important; /* #fff2cc */
+}
+
+.heading{
+	/*padding-top:40px !important;
+	padding-left:60px;*/
+	text-align: center;
+}
+
+.inner-heading{
+	padding-top:15px !important;
+	/*padding-left:40px;*/
+}
+
+.entity-logo {
+	padding-top:50px !important;
+	/*padding-left:60px;
+	padding-left:5%;*/
+}
+
+.tradePanel {
+	color: white !important;
+	background-color: #8A0404 !important; 
+	font-size: 16px; 
+	font-weight: 600; 
+	padding: 10px 24px;
+	letter-spacing: 1px;
+}
+
+.login-input {
+	height:30px;
+	width:200px;
+	padding-right:0px;
+	background-color:white !important;
+	border-style: groove;
+}
+
+.path{
+	display:inline;
+}
+
+.path li a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.active {
+	background-color:white;
+}
+
+ul.tab {
+	list-style-type: none;
+	margin: 15.5px;
+	padding: 0;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #f1f1f1;
+}	
+
+ul-tabs{
+	padding-left: 0px;
+    margin-bottom: -15px;
+    list-style: none;
+	margin-top: 7px;
+}	
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+	display: inline-block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	transition: 0.3s;
+	font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+	background-color: white;/*#ddd;*/
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+	background-color: white !important;/*#ccc;*/
+}
+
+.nav-tabs > li > a {
+    margin-right: 0px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+	border-radius: 0 0 0 0;
+}
+
+/* Style the tab content */
+.tabcontent {
+	margin: 15.5px;
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+	background-color: #ccc;
+}
+
+.tab-div{
+	padding-left:40px;
+	background-color:white;
+}
+
+.style_panel {
+	margin-bottom: 20px;
+	background-color: transparent;/*#fff;/*White*/
+	border: 1px solid transparent;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.panel_window {
+	padding: 20px;
+	/*background: transparent;*/
+	background-color: rgba(255, 255, 255, 0.2);
+	padding: 3em;
+	border-radius: .25em;
+
+}
+
+.homePage{
+	background-color: rgba(255, 255, 255, 0.2); /* #fff2cc !important;*/
+	margin-top: 5%;
+	padding-bottom: 0 !important; 
+	margin-bottom: 0 !important; 
+}
+
+.cards {
+	/*background-color: #611C1C !important; #260C0C*/
+	color:  grey !important; /* #fff2cc */
+}
+
+
+md-toast {
+	position: fixed !important;
+}
+
+md-toast.md-error-toast-theme div.md-toast-content{
+	color: white;
+	background-color: #8A0404;
+	letter-spacing: 1px;
+	/*font-weight: bold !important;*/
+}
+
+md-toast.md-success-toast-theme div.md-toast-content{
+	color: white;
+	background-color: green;
+	letter-spacing: 1px;
+	/*font-weight: bold !important;*/
+}
+
+
+
+.spinner {
+	position: absolute;
+	text-align: center;
+	margin: 30% 60%;
+}
+
+.spinner-dialog{
+	padding: 10px; 
+	background-color: #303030;
+}
+
+.spinner-dialog p{
+	width: 200px; 
+	height: 50px; 
+	color: white; 
+	padding-left: 30px; 
+	padding-top: 22px;
+}
+
+md-nav-bar.md-default-theme md-nav-ink-bar, md-nav-bar md-nav-ink-bar {
+    /*color: #611C1C;*/
+    background: rgba(16, 73, 106, 0.70);/*#611C1C;*/
+}
+
+ .md-button.md-default-theme.md-accent, .md-button.md-accent {
+	color: rgba(16, 73, 106, 0.70);
+	font-weight: bold;
+}
+
+md-button.md-default-theme.md-primary.md-fab, .md-button.md-primary.md-fab, .md-button.md-default-theme.md-primary.md-raised, .md-button.md-primary.md-raised {
+    color: white;
+    background-color: rgba(16, 73, 106, 0.70);
+}
+
+/* .md-button.md-default-theme.md-fab[disabled], .md-button.md-fab[disabled], .md-button.md-default-theme.md-raised[disabled], .md-button.md-raised[disabled] {
+    background-color: rgba(0,0,0,0.12);
+} */
+
+md-expansion-panel .md-expansion-panel-footer-container, md-expansion-panel .md-expansion-panel-header-container, md-expansion-panel md-expansion-panel-collapsed {
+	background: rgba(16, 73, 106, 0.70) !important;
+	color: white !important;
+}
+
+md-expansion-panel {
+    display: block;
+    position: relative;
+    outline: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    box-shadow: 0 -1px rgba(16, 73, 106, 0.70), 0 0 2px rgba(16, 73, 106, 0.70), 0 2px 4px rgba(16, 73, 106, 0.70);
+}
+
+.expansionHeader{
+	color: white !important;
+	letter-spacing: 1px;
+}
+
+.tableHeading{
+	color: white !important;
+	font-size: 16px !important; 
+	font-weight: 600 !important; 
+	padding: 10px 24px !important; 
+	background: rgba(16, 73, 106, 0.70) !important;
+	
+}
+
+.customPanel {
+	background: #f1f1f1;
+	border:1px solid rgba(16, 73, 106, 0.70);
+}

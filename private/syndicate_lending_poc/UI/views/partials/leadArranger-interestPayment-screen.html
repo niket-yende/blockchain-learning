@@ -1,0 +1,24 @@
+<div class="container formdata">
+  <br>
+  <br>
+  <div class="panel panel-default customPanel">
+    <div class="panel-heading md-title tableHeading">Payment</div>
+    <div class="panel-body container">
+      <br>
+      <form class="form-horizontal">
+        <div class="form-group row">
+          <label class="control-label col-sm-2" for="loanRef">Loan Reference:</label>
+          <div class="col-sm-4">
+            <select class="browser-default custom-select form-control" name="loanRef" ng-model="laip.loanRef" ng-change="">
+              <option value="" selected="selected" disabled>Please select Loan Reference</option>
+              <option value={{data}} ng-repeat="data in laip.LoanRefernce1">{{data}}</option>
+            </select>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary btn-block" ng-click="laip.createPayment()">Initiate Payment</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

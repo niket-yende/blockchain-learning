@@ -1,0 +1,85 @@
+<div>
+  <br>
+  <md-expansion-panel-group md-component-id="panelGroup">
+    <md-expansion-panel md-component-id="documentPanel">
+      <md-expansion-panel-collapsed style="cursor: pointer;">
+        <div class="md-title expansionHeader">Upload Document</div>
+        <div flex></div>
+        <md-expansion-panel-icon style="cursor:pointer;"></md-expansion-panel-icon>
+      </md-expansion-panel-collapsed>
+      <md-expansion-panel-expanded>
+        <md-expansion-panel-header ng-click="lad.collapse($panel, documentform)">
+          <div class="md-title expansionHeader">Upload Document</div>
+          <div flex></div>
+          <md-expansion-panel-icon style="cursor:pointer;" ng-click="lad.collapse($panel, documentform)"></md-expansion-panel-icon>
+        </md-expansion-panel-header>
+        <md-expansion-panel-content>
+          <form class="form-horizontal" name="documentform" enctype="multipart/form-data">
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="loanRef">Loan Reference:</label>
+              <div class="col-sm-4">
+                <select class="browser-default custom-select form-control" name="loanRef" ng-model="lad.loanRef">
+                  <option value="" selected="selected" disabled>Please select Loan Reference</option>
+                  <option value={{data.loanRef}} ng-repeat="data in lad.LoanRefernce">{{data.loanRef}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="documentType">Document Type:</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" ng-model="lad.documentType" id="documentType" disabled>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="termSheet">Upload Document:</label>
+              <input type="file" file-input="lad.termSheet" class="col-sm-4 form-control-file" />
+            </div>
+            <br>
+            <div class="form-group row">
+              <div class="col-sm-2 offset-sm-2">
+                <button type="submit" class="btn btn-success btn-block" ng-click="lad.uploadFile()">Upload</button>
+              </div>
+            </div>
+          </form>
+        </md-expansion-panel-content>
+      </md-expansion-panel-expanded>
+    </md-expansion-panel>
+  </md-expansion-panel-group>
+  <br>
+  <div class="panel panel-default customPanel">
+    <div class="panel-heading md-title tableHeading">Documents Uploaded</div>
+    <div class="panel-body">
+      <md-table-container>
+        <table md-table md-progress="lad.loadPromise">
+          <thead md-head>
+            <tr md-row>
+              <th md-column>Loan Ref.</th>
+              <th md-column>Document Hash</th>
+              <th md-column>Status</th>
+              <th md-column>Action</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row md-select="data" md-select-id="data" md-auto-select ng-repeat="data in lad.loadHistory | limitTo: lad.loadTableQuery.limit: (lad.loadTableQuery.page - 1) * lad.loadTableQuery.limit"
+              ng-if="lad.dataStatus == 1">
+              <td md-cell>{{data.loanRef}}</td>
+              <td md-cell>{{data.fileHash}}</td>
+              <td md-cell>{{data.status}}</td>
+              <td md-cell>
+                <span class="fa fa-download" ng-click="lad.downloadDoc(data)" style="cursor:pointer;">
+                  <md-tooltip md-direction="left"> Download </md-tooltip>
+                </span>
+              </td>
+            </tr>
+            <tr md-row md-auto-select ng-if="lad.dataStatus == 2 || lad.dataStatus != 1 && lad.dataStatus != 2">
+              <td md-cell colspan="4" ng-if="lad.dataStatus == 2" style="color:#2B593E !important; font-weight:bold;" ng-bind="lad.loadErrorMsg"></td>
+              <td md-cell colspan="4" ng-if="lad.dataStatus != 1 && lad.dataStatus != 2" style="color:red !important; font-weight:bold;"
+                ng-bind="lad.loadErrorMsg"></td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+      <md-table-pagination md-limit="lad.loadTableQuery.limit" md-limit-options="[5, 10, 15]" md-page="lad.loadTableQuery.page"
+        md-total="{{lad.loadHistory.length}}"></md-table-pagination>
+    </div>
+  </div>

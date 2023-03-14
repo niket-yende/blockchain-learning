@@ -1,0 +1,198 @@
+<div>
+  <br>
+  <md-expansion-panel-group md-component-id="panelGroup">
+    <md-expansion-panel md-component-id="borrowerLoanDetailsPanel">
+      <md-expansion-panel-collapsed style="cursor: pointer;">
+        <div class="md-title expansionHeader">Loan Details</div>
+        <div flex></div>
+        <md-expansion-panel-icon style="cursor:pointer;"></md-expansion-panel-icon>
+      </md-expansion-panel-collapsed>
+      <md-expansion-panel-expanded>
+        <md-expansion-panel-header ng-click="bld.collapse($panel, borrowerLoanDetailsForm)">
+          <div class="md-title expansionHeader">Loan Details</div>
+          <div flex></div>
+          <md-expansion-panel-icon style="cursor:pointer;" ng-click="bld.collapse($panel, borrowerLoanDetailsForm)"></md-expansion-panel-icon>
+        </md-expansion-panel-header>
+        <md-expansion-panel-content>
+          <form class="form-horizontal" ng-if="true" name="borrowerLoanDetailsForm">
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="loanRef">Loan Reference:</label>
+              <div class="col-sm-4">
+                <select class="browser-default custom-select form-control" name="loanRef" ng-model="bld.loanRef1" ng-change="bld.getLoanDetails(bld.loanRef1)">
+                  <option value="" selected="selected" disabled>Please select Loan Reference</option>
+                  <option value={{data}} ng-repeat="data in bld.LoanRefernce1">{{data}}</option>
+                </select>
+              </div>
+            </div>
+            <div ng-show="bld.dataAvailable">
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="loanName">Loan Name:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" ng-model="bld.loanName" id="loanName" disabled>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="loanType">Loan Type:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" ng-model="bld.loanType" id="loanType" disabled>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="principal">Principal:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" ng-model="bld.principal" id="principal" disabled>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="tenure">Tenor:</label>
+                <div class="col-sm-4">
+                  <input type="text" ng-model="bld.tenor" class="form-control" disabled>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="interestRateType">Interest Rate Type:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" ng-model="bld.interestRateType" id="interestRateType" disabled>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="interestRate">Interest Rate:</label>
+                <div class="col-sm-4">
+                  <input type="number" class="form-control" ng-model="bld.interestRate" id="interestRate" disabled>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="syndicationType" class="col-sm-2 col-form-label">Frequency:</label>
+                <div class="col-sm-4">
+                  <select class="browser-default custom-select form-control" name="frequency" ng-model="bld.frequency" ng-required>
+                    <option value="" selected="selected" disabled>Please select Frequency</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Quarterly">Quarterly</option>
+                    <option value="Yearly">Annual</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="paymentDate">Payment Day:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" ng-model="bld.paymentDate" id="paymentDate" disabled>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="collateral">Collateral:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" ng-model="bld.collateral" id="collateral" disabled>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="arrangerAccount">Arranger Account:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" ng-model="bld.arrangerAccount" id="arrangerAccount" disabled>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-2 offset-sm-2">
+                  <button type="submit" class="btn btn-success btn-block" ng-click="bld.createLoanLedger()">Create</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </md-expansion-panel-content>
+      </md-expansion-panel-expanded>
+    </md-expansion-panel>
+  </md-expansion-panel-group>
+
+
+  <br>
+  <md-expansion-panel-group md-component-id="panelGroup">
+    <md-expansion-panel md-component-id="borrowerLoanDetailsPanel">
+      <md-expansion-panel-collapsed style="cursor: pointer;">
+        <div class="md-title expansionHeader">Balance Details</div>
+        <div flex></div>
+        <md-expansion-panel-icon style="cursor:pointer;"></md-expansion-panel-icon>
+      </md-expansion-panel-collapsed>
+      <md-expansion-panel-expanded>
+        <md-expansion-panel-header ng-click="bld.collapse($panel, BalanceForm)">
+          <div class="md-title expansionHeader">Balance Details</div>
+          <div flex></div>
+          <md-expansion-panel-icon style="cursor:pointer;" ng-click="bld.collapse($panel, BalanceForm)"></md-expansion-panel-icon>
+        </md-expansion-panel-header>
+        <md-expansion-panel-content>
+          <form class="form-horizontal" ng-if="true" name="BalanceForm">
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="loanRef">Loan Reference:</label>
+              <div class="col-sm-4">
+                <select class="browser-default custom-select form-control" name="loanRef" ng-model="bld.loanRef" ng-change="bld.getBalance(bld.loanRef)">
+                  <option value="" selected="selected" disabled>Please select Loan Reference</option>
+                  <option value={{data}} ng-repeat="data in bld.LoanRefernce2">{{data}}</option>
+                </select>
+              </div>
+            </div>
+            <div ng-show="bld.dataAvailable1">
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="accountId">Account ID:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" ng-model="bld.accountId" id="accountId" disabled>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-sm-2" for="balance">Balance:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" ng-model="bld.balance" id="balance" disabled>
+                </div>
+              </div>
+            </div>
+          </form>
+        </md-expansion-panel-content>
+      </md-expansion-panel-expanded>
+    </md-expansion-panel>
+  </md-expansion-panel-group>
+  <br>
+  <div class="panel panel-default customPanel">
+    <div class="panel-heading md-title tableHeading">Loan History</div>
+    <div class="panel-body">
+      <md-table-container>
+        <table md-table md-progress="bld.loadPromise">
+          <thead md-head>
+            <tr md-row>
+              <th md-column>Loan Reference</th>
+              <th md-column>Loan Name</th>
+              <th md-column>Loan Type</th>
+              <th md-column>Principal</th>
+              <th md-column>Tenor</th>
+              <th md-column>Interest Rate</th>
+              <th md-column>Payment Date</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row md-select="data" md-select-id="data" md-auto-select ng-repeat="data in bld.loadHistory | limitTo: bld.loadTableQuery.limit: (bld.loadTableQuery.page - 1) * bld.loadTableQuery.limit"
+              ng-if="bld.dataStatus == 1">
+              <td md-cell>{{data.loanRef}}</td>
+              <td md-cell>{{data.loanName}}</td>
+              <td md-cell>{{data.loanType}}</td>
+              <td md-cell>USD {{data.principal}} million</td>
+              <td md-cell>{{data.tenure}}</td>
+              <td md-cell>{{data.interestRate}}</td>
+              <td md-cell>{{data.paymentDate}}</td>
+            </tr>
+            <tr md-row md-auto-select ng-if="bld.dataStatus == 2 || bld.dataStatus != 1 && bld.dataStatus != 2">
+              <td md-cell colspan="4" ng-if="bld.dataStatus == 2" style="color:#2B593E !important; font-weight:bold;" ng-bind="bld.loadErrorMsg"></td>
+              <td md-cell colspan="4" ng-if="bld.dataStatus != 1 && bld.dataStatus != 2" style="color:red !important; font-weight:bold;"
+                ng-bind="bld.loadErrorMsg"></td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+      <md-table-pagination md-limit="bld.loadTableQuery.limit" md-limit-options="[5, 10, 15]" md-page="bld.loadTableQuery.page"
+        md-total="{{bld.loadHistory.length}}"></md-table-pagination>
+    </div>
+  </div>

@@ -1,0 +1,113 @@
+version: '3.1'
+services:
+
+  leadArranger:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #image: corda-3.2
+    environment:
+      - JAVA_OPTIONS=-Xmx512m
+    ports:
+      - "10008:10008"
+      - "10009:10009"
+    image: corda_image:4.0
+    container_name: leadArranger
+    volumes:
+      - ./build/nodes/LeadArranger/:/opt/corda/
+    networks:
+      - syndicatenetwork
+
+  notary:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - JAVA_OPTIONS=-Xmx512m
+    ports:
+      - "10002:10002"
+      - "10003:10003"
+    image: corda_image:4.0
+    container_name: notary
+    volumes:
+      - ./build/nodes/Notary/:/opt/corda/
+    networks:
+      - syndicatenetwork
+
+  borrower:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - JAVA_OPTIONS=-Xmx512m
+    ports:
+      - "10005:10005"
+      - "10006:10006"
+    image: corda_image:4.0
+    container_name: borrower
+    volumes:
+      - ./build/nodes/Borrower/:/opt/corda/
+    networks:
+      - syndicatenetwork
+
+  lenderA:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - JAVA_OPTIONS=-Xmx512m
+    ports:
+      - "10011:10011"
+      - "10012:10012"
+    image: corda_image:4.0
+    container_name: lenderA
+    volumes:
+      - ./build/nodes/LenderA/:/opt/corda/
+    networks:
+      - syndicatenetwork
+
+  lenderB:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - JAVA_OPTIONS=-Xmx512m
+    ports:
+      - "10014:10014"
+      - "10015:10015"
+    image: corda_image:4.0
+    container_name: lenderB
+    volumes:
+      - ./build/nodes/LenderB/:/opt/corda/
+    networks:
+      - syndicatenetwork
+
+  # spring_boot:
+  #   build:
+  #     context: .
+  #     # dockerfile: Dockerfile
+  #   environment:
+  #     - JAVA_OPTIONS=-Xmx512m
+  #   ports:
+  #     - "10016:10006"
+  #     - "10019:10009"
+  #     - "10022:10012"
+  #     - "10025:10015"
+  #     - "10060:10060"
+  #   image: openjdk:8u212-jre-alpine
+  #   container_name: spring_boot
+  #   volumes:
+  #     - ./:/opt/corda/
+  #   working_dir: /opt/corda/clients   
+  #   command: ../gradlew runCommonServer  
+  #   depends_on:
+  #     - leadArranger
+  #     - borrower
+  #     - lenderA
+  #     - lenderB
+  #   networks:
+  #     - syndicatenetwork  
+
+networks:
+  syndicatenetwork:
+    # external: true

@@ -1,0 +1,221 @@
+<div>
+  <br>
+  <md-expansion-panel-group md-component-id="panelGroup">
+    <md-expansion-panel md-component-id="involvedPartiesPanel">
+      <md-expansion-panel-collapsed style="cursor: pointer;">
+        <div class="md-title expansionHeader">Involved Parties</div>
+        <div flex></div>
+        <md-expansion-panel-icon style="cursor:pointer;"></md-expansion-panel-icon>
+      </md-expansion-panel-collapsed>
+      <md-expansion-panel-expanded>
+        <md-expansion-panel-header ng-click="lap.collapse($panel, involvedParties)">
+          <div class="md-title expansionHeader">Involved Parties</div>
+          <div flex></div>
+          <md-expansion-panel-icon style="cursor:pointer;" ng-click="lap.collapse($panel, involvedParties)"></md-expansion-panel-icon>
+        </md-expansion-panel-header>
+        <md-expansion-panel-content>
+          <form class="form-horizontal" name="involvedParties">
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="loanRef">Loan Reference:</label>
+              <div class="col-sm-4">
+                <select class="browser-default custom-select form-control" name="loanRef" ng-model="lap.loanRef">
+                  <option value="" selected="selected" disabled>Please select Loan Reference</option>
+                  <option value={{data.loanRef}} ng-repeat="data in lap.LoanRefernce">{{data.loanRef}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="entityName">Entity Name:</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" ng-model="lap.entityName" id="entityName" placeholder="Enter Entity Name" ng-required="true">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="entityType" class="col-sm-2 col-form-label">Entity Type:</label>
+              <div class="col-sm-4">
+                <select class="browser-default custom-select form-control" name="entityType" ng-model="lap.entityType" ng-required="true">
+                  <option value="" selected="selected" disabled>Please select your Entity Type</option>
+                  <option value="Borrower">Borrower</option>
+                  <option value="Lender">Lender</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="accountName" class="col-sm-2 control-label">Account Name:</label>
+              <div class="col-sm-4">
+                <input type="text" id="accountName" ng-model="lap.accountName" placeholder="Enter Account Name" class="form-control" name="accountName"
+                  ng-required="true">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="accountType" class="col-sm-2 col-form-label">Account Type:</label>
+              <div class="col-sm-4">
+                <select class="browser-default custom-select form-control" name="accountType" ng-model="lap.accountType" ng-required="true">
+                  <option value="" selected="selected" disabled>Please select your Account Type</option>
+                  <option value="Issuer">Issuer</option>
+                  <option value="Investor">Investor</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="paymentAccount" class="col-sm-2 control-label">Payment Account:</label>
+              <div class="col-sm-4">
+                <input type="text" id="paymentAccount" ng-model="lap.paymentAccount" placeholder="Enter Payment Account" class="form-control"
+                  ng-required="true">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="paymentBank" class="col-sm-2 control-label">Payment Bank:</label>
+              <div class="col-sm-4">
+                <input type="text" id="paymentBank" ng-model="lap.paymentBank" placeholder="Enter Payment Bank" class="form-control" ng-required="true">
+              </div>
+            </div>
+            <div ng-show="lap.entityType=='Borrower'">
+              <div class="form-group row">
+                <label for="leadArrangerName" class="col-sm-2 control-label">Lead Arranger Name:</label>
+                <div class="col-sm-4">
+                  <input type="text" id="leadArrangerName" ng-model="lap.leadArrangerName" placeholder="Enter Lead Arranger Name" class="form-control"
+                    ng-required="true">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="leadArrangerAccount" class="col-sm-2 control-label">Lead Arranger Account:</label>
+                <div class="col-sm-4">
+                  <input type="text" id="leadArrangerAccount" ng-model="lap.leadArrangerAccount" placeholder="Enter Lead Arranger Account"
+                    class="form-control" ng-required="true">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="rateOfInterest" class="col-sm-2 control-label">Rate Of Interest (%):</label>
+                <div class="col-sm-4">
+                  <input type="text" id="rateOfInterest" ng-model="lap.rateOfInterest" placeholder="Enter Rate Of Interest" class="form-control"
+                    ng-required="true">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="leadArrangerBank" class="col-sm-2 control-label">Lead Arranger Bank:</label>
+                <div class="col-sm-4">
+                  <input type="text" id="leadArrangerBank" ng-model="lap.leadArrangerBank" placeholder="Enter Lead Arranger Bank" class="form-control"
+                    ng-required="true">
+                </div>
+              </div>
+            </div>
+
+            <br>
+            <div class="form-group row">
+              <div class="col-sm-2 offset-sm-2">
+                <button type="submit" class="btn btn-success btn-block" ng-click="lap.addParties()">Save</button>
+              </div>
+              <!-- <div class="col-sm-2"><button type="reset" class="btn btn-danger btn-block">Cancel</button></div>           -->
+            </div>
+          </form>
+        </md-expansion-panel-content>
+      </md-expansion-panel-expanded>
+    </md-expansion-panel>
+  </md-expansion-panel-group>
+  <br>
+  <div class="panel panel-default customPanel">
+    <div class="panel-heading md-title tableHeading">Involved Parties History</div>
+    <div class="panel-body">
+      <md-table-container>
+        <table md-table md-progress="lap.loadPromise">
+          <thead md-head>
+            <tr md-row>
+              <th md-column>Loan Ref</th>
+              <th md-column>Start Date</th>
+              <th md-column>End Date</th>
+              <th md-column>Lead Arranger Bank</th>
+              <th md-column>Interest%</th>
+              <th md-column>Tenor</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row md-select="data" ng-init="data.expanded=false" md-select-id="data" md-auto-select ng-repeat-start="data in lap.loadHistory | limitTo: lap.loadTableQuery.limit: (lap.loadTableQuery.page - 1) * lap.loadTableQuery.limit"
+              ng-if="lap.dataStatus == 1">
+              <td md-cell>
+                <a href="" ng-click="data.expanded = !data.expanded" style="color: #1c3df7">{{data.loanRef}}</a>
+              </td>
+              <td md-cell>{{data.startDate}}</td>
+              <td md-cell>{{data.endDate}}</td>
+              <td md-cell>{{data.payingBank}}</td>
+              <td md-cell>{{data.rateOfInterest}}</td>
+              <td md-cell>{{data.tenure}}</td>
+            </tr>
+            <tr md-row ng-if="data.expanded" ng-repeat-end="">
+              <td colspan="8">
+                <div class="card" style="padding-left: 30px;">
+                  <div class="row">
+                    <br>
+                    <div class="col-sm-4">
+                      <div class="form-group card-body text-dark" ng-if="data.borrowerBank!=''">
+                        <label>Borrower Name:</label>
+                        <div ng-if="data.borrower=='Borrower'?borrower='FLIPKART':''">
+                          <input type="text" class="form-control" ng-model="borrower" disabled>
+                        </div>
+                        <br>
+                        <label>Borrower Account:</label>
+                        <div>
+                          <input type="text" class="form-control" ng-model="data.borrowerAccountNumber" disabled>
+                        </div>
+                        <br>
+                        <label>Borrower Bank:</label>
+                        <div>
+                          <input type="text" class="form-control" ng-model="data.borrowerBank" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group card-body text-dark" ng-if="data.lenderABank!=''">
+                        <label>First Lender Name:</label>
+                        <div ng-if="data.lenderA=='LenderA'?lenderA='ILFS':''">
+                          <input type="text" class="form-control" ng-model="lenderA" disabled>
+                        </div>
+                        <br>
+                        <label>First Lender Account:</label>
+                        <div>
+                          <input type="text" class="form-control" ng-model="data.lenderAAccountNumber" disabled>
+                        </div>
+                        <br>
+                        <label>First Lender Bank:</label>
+                        <div>
+                          <input type="text" class="form-control" ng-model="data.lenderABank" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group card-body text-dark" ng-if="data.lenderBBank!=''">
+                        <label>Second Lender Name:</label>
+                        <div ng-if="data.lenderB=='LenderB'?lenderB='SOFTBANK':''">
+                          <input type="text" class="form-control" ng-model="lenderB" disabled>
+                        </div>
+                        <br>
+                        <label>Second Lender Account:</label>
+                        <div>
+                          <input type="text" class="form-control" ng-model="data.lenderBAccountNumber" disabled>
+                        </div>
+                        <br>
+                        <label>Second Lender Bank:</label>
+                        <div>
+                          <input type="text" class="form-control" ng-model="data.lenderBBank" disabled>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr md-row md-auto-select ng-if="lap.dataStatus == 2 || lap.dataStatus != 1 && lap.dataStatus != 2">
+              <td md-cell colspan="4" ng-if="lap.dataStatus == 2" style="color:#2B593E !important; font-weight:bold;" ng-bind="lap.loadErrorMsg"></td>
+              <td md-cell colspan="4" ng-if="lap.dataStatus != 1 && lap.dataStatus != 2" style="color:red !important; font-weight:bold;"
+                ng-bind="lap.loadErrorMsg"></td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+      <md-table-pagination md-limit="lap.loadTableQuery.limit" md-limit-options="[5, 10, 15]" md-page="lap.loadTableQuery.page"
+        md-total="{{lap.loadHistory.length}}"></md-table-pagination>
+    </div>
+  </div>

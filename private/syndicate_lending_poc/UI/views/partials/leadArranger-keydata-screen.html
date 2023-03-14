@@ -1,0 +1,109 @@
+<div>
+  <br>
+  <md-expansion-panel-group md-component-id="panelGroup">
+    <md-expansion-panel md-component-id="keyDataPanel">
+      <md-expansion-panel-collapsed style="cursor: pointer;">
+        <div class="md-title expansionHeader">Key Data</div>
+        <div flex></div>
+        <md-expansion-panel-icon style="cursor:pointer;"></md-expansion-panel-icon>
+      </md-expansion-panel-collapsed>
+      <md-expansion-panel-expanded>
+        <md-expansion-panel-header ng-click="lakd.collapse($panel, keyDataForm)">
+          <div class="md-title expansionHeader">Key Data</div>
+          <div flex></div>
+          <md-expansion-panel-icon style="cursor:pointer;" ng-click="lakd.collapse($panel, keyDataForm)"></md-expansion-panel-icon>
+        </md-expansion-panel-header>
+        <md-expansion-panel-content>
+          <form class="form-horizontal" name="keyDataForm">
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="issuerName">Issuer Name:</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" ng-model="lakd.issuerName" id="issuerName" placeholder="Enter Issuer Name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="entityType" class="col-sm-2 col-form-label">Entity Type:</label>
+              <div class="col-sm-4">
+                <select class="browser-default custom-select form-control" name="entityType" ng-model="lakd.entityType" ng-init="lakd.entityType='Corporate'">
+                  <option value="Corporate">Corporate</option>
+                  <option value="Special Projects" disabled>Special Projects</option>
+                  <option value="Goverment" disabled>Goverment</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="syndicationType" class="col-sm-2 col-form-label">Syndication Type:</label>
+              <div class="col-sm-4">
+                <select class="browser-default custom-select form-control" name="syndicationType" ng-model="lakd.syndicationType" ng-init="lakd.syndicationType='Underwritten'">
+                  <option value="Underwritten">Underwritten</option>
+                  <option value="Best Efforts" disabled>Best Efforts</option>
+                  <option value="Club Deal" disabled>Club Deal</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="loanType" class="col-sm-2 control-label">Loan Type:</label>
+              <div class="col-sm-4">
+                <input type="text" id="loanType" ng-model="lakd.loanType" class="form-control" name="loanType" disabled>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="tenor" class="col-sm-2 control-label">Tenor:</label>
+              <div class="col-sm-4">
+                <select class="browser-default custom-select form-control" name="tenor" ng-model="lakd.tenor">
+                  <option value="" selected="selected" disabled>Please select Tenor</option>
+                  <option value="5">5 Years</option>
+                  <option value="10">10 Years</option>
+                  <option value="15">15 Years</option>
+                </select>
+              </div>
+            </div>
+            <br>
+            <div class="form-group row">
+              <div class="col-sm-2 offset-sm-2">
+                <button type="submit" class="btn btn-success btn-block" ng-click="lakd.createKeyData()">Save</button>
+              </div>
+            </div>
+          </form>
+        </md-expansion-panel-content>
+      </md-expansion-panel-expanded>
+    </md-expansion-panel>
+  </md-expansion-panel-group>
+  <br>
+  <div class="panel panel-default customPanel">
+    <div class="panel-heading md-title tableHeading">Key Data History</div>
+    <div class="panel-body">
+      <md-table-container>
+        <table md-table md-progress="lakd.loadPromise">
+          <thead md-head>
+            <tr md-row>
+              <th md-column>Loan Ref.</th>
+              <th md-column>Issuer Name</th>
+              <th md-column>Entity Type</th>
+              <th md-column>Syndication Type</th>
+              <th md-column>Loan Type </th>
+              <th md-column>Tenor</th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row md-select="data" md-select-id="data" md-auto-select ng-repeat="data in lakd.loadHistory | limitTo: lakd.loadTableQuery.limit: (lakd.loadTableQuery.page - 1) * lakd.loadTableQuery.limit"
+              ng-if="lakd.dataStatus == 1">
+              <td md-cell>{{data.loanRef}}</td>
+              <td md-cell>{{data.issuerName}}</td>
+              <td md-cell>{{data.entityType}}</td>
+              <td md-cell>{{data.syndicationType}}</td>
+              <td md-cell>{{data.loanType}}</td>
+              <td md-cell>{{data.tenure}}</td>
+            </tr>
+            <tr md-row md-auto-select ng-if="lakd.dataStatus == 2 || lakd.dataStatus != 1 && lakd.dataStatus != 2">
+              <td md-cell colspan="4" ng-if="lakd.dataStatus == 2" style="color:#2B593E !important; font-weight:bold;" ng-bind="lakd.loadErrorMsg"></td>
+              <td md-cell colspan="4" ng-if="lakd.dataStatus != 1 && lakd.dataStatus != 2" style="color:red !important; font-weight:bold;"
+                ng-bind="lakd.loadErrorMsg"></td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+      <md-table-pagination md-limit="lakd.loadTableQuery.limit" md-limit-options="[5, 10, 15]" md-page="lakd.loadTableQuery.page"
+        md-total="{{lakd.loadHistory.length}}"></md-table-pagination>
+    </div>
+  </div>
