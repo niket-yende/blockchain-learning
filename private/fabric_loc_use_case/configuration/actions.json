@@ -1,0 +1,6 @@
+{
+	"Exporter": [ "Sale Contract","Bill of Lading Details after Shipment"],
+	"Importer": ["Application for LC","Close LC and Trade"],
+	"IssuingBank": ["LC Issue","Payment Transfer","Release of Doc"],
+	"AdvisingBank": ["LC Advice","Payment Acknowledgement"]
+}

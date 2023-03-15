@@ -1,0 +1,200 @@
+#
+# Copyright 2018 IBM All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+#
+# Copyright 2018 IBM All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+version: "2"
+
+volumes:
+  orderer.loc.com:
+  peer0.exporterorg.loc.com:
+  peer0.importerorg.loc.com:
+  peer0.issuingbankorg.loc.com:
+  peer0.advisingbankorg.loc.com:
+  peer0.carrierorg.loc.com:
+
+networks:
+  loc:
+services:
+  exporter-ca:
+    image: hyperledger/fabric-ca:$IMAGE_TAG
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-exporterorg
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.exporterorg.loc.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/EXPORTER_CA_PRIVATE_KEY
+    ports:
+      - "7054:7054"
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.exporterorg.loc.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/EXPORTER_CA_PRIVATE_KEY -b admin:adminpw -d'
+    volumes:
+      - ./crypto-config/peerOrganizations/exporterorg.loc.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peerExporterOrg
+    networks:
+      - loc
+
+  importer-ca:
+    image: hyperledger/fabric-ca:$IMAGE_TAG
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-importerorg
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.importerorg.loc.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/IMPORTER_CA_PRIVATE_KEY
+    ports:
+      - "8054:7054"
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.importerorg.loc.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/IMPORTER_CA_PRIVATE_KEY -b admin:adminpw -d'
+    volumes:
+      - ./crypto-config/peerOrganizations/importerorg.loc.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peerImporterOrg
+    networks:
+      - loc
+
+  issuingbank-ca:
+    image: hyperledger/fabric-ca:$IMAGE_TAG
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-issuingbankorg
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.issuingbankorg.loc.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/ISSUINGBANK_CA_PRIVATE_KEY
+    ports:
+      - "9054:7054"
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.issuingbankorg.loc.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/ISSUINGBANK_CA_PRIVATE_KEY -b admin:adminpw -d'
+    volumes:
+      - ./crypto-config/peerOrganizations/issuingbankorg.loc.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peerIssuingBankOrg
+    networks:
+      - loc
+
+  advisingbank-ca:
+    image: hyperledger/fabric-ca:$IMAGE_TAG
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-advisingbankorg
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.advisingbankorg.loc.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/ADVISINGBANK_CA_PRIVATE_KEY
+    ports:
+      - "10054:7054"
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.advisingbankorg.loc.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/ADVISINGBANK_CA_PRIVATE_KEY -b admin:adminpw -d'
+    volumes:
+      - ./crypto-config/peerOrganizations/advisingbankorg.loc.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peeradvisingbankOrg
+    networks:
+      - loc
+
+  carrier-ca:
+    image: hyperledger/fabric-ca:$IMAGE_TAG
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-carrierorg
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.carrierorg.loc.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/CARRIER_CA_PRIVATE_KEY
+    ports:
+      - "11054:7054"
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.carrierorg.loc.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/CARRIER_CA_PRIVATE_KEY -b admin:adminpw -d'
+    volumes:
+      - ./crypto-config/peerOrganizations/carrierorg.loc.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peercarrierOrg
+    networks:
+      - loc 
+
+  orderer.loc.com:
+    extends:
+      file: base/docker-compose-base.yaml
+      service: orderer.loc.com
+    container_name: orderer.loc.com
+    networks:
+      - loc
+
+  peer0.exporterorg.loc.com:
+    container_name: peer0.exporterorg.loc.com
+    extends:
+      file: base/docker-compose-base.yaml
+      service: peer0.exporterorg.loc.com
+    networks:
+      - loc
+
+  peer0.importerorg.loc.com:
+    container_name: peer0.importerorg.loc.com
+    extends:
+      file: base/docker-compose-base.yaml
+      service: peer0.importerorg.loc.com
+    networks:
+      - loc
+
+  peer0.issuingbankorg.loc.com:
+    container_name: peer0.issuingbankorg.loc.com
+    extends:
+      file: base/docker-compose-base.yaml
+      service: peer0.issuingbankorg.loc.com
+    networks:
+      - loc
+
+  peer0.advisingbankorg.loc.com:
+    container_name: peer0.advisingbankorg.loc.com
+    extends:
+      file: base/docker-compose-base.yaml
+      service: peer0.advisingbankorg.loc.com
+    networks:
+      - loc
+
+  peer0.carrierorg.loc.com:
+    container_name: peer0.carrierorg.loc.com
+    extends:
+      file: base/docker-compose-base.yaml
+      service: peer0.carrierorg.loc.com
+    networks:
+      - loc
+
+  cli:
+    container_name: cli
+    image: hyperledger/fabric-tools
+    tty: true
+    environment:
+      - GOPATH=/opt/gopath
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - FABRIC_LOGGING_SPEC=info
+      - CORE_PEER_ID=cli
+      - CORE_PEER_ADDRESS=peer0.exporterorg.loc.com:7051
+      - CORE_PEER_LOCALMSPID=ExporterOrgMSP
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/exporterorg.loc.com/users/Admin@exporterorg.loc.com/msp
+      - CORE_CHAINCODE_KEEPALIVE=10
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: /bin/bash
+    volumes:
+      - /var/run/:/host/var/run/
+      - ./../chaincode/:/opt/gopath/src/github.com/chaincode/
+      - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+      - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
+    networks:
+      - loc

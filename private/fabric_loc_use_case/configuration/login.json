@@ -1,0 +1,26 @@
+[
+	{
+		"entity":"Exporter",
+		"username": "ABCExports",
+		"password": "ABCExports",
+		"displayName":"ABC Exports"
+	},
+	{
+		"entity":"Importer",
+		"username": "XYZImports",
+		"password": "XYZImports",
+		"displayName":"XYZ Imports"
+	},
+	{
+		"entity":"IssuingBank",
+		"username": "UKLCBank",
+		"password": "UKLCBank",
+		"displayName":"UKLC Bank"
+	},
+	{
+		"entity":"AdvisingBank",
+		"username": "ADIBank",
+		"password": "ADIBank",
+		"displayName":"ADI Bank"
+	}
+]
